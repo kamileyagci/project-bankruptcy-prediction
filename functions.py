@@ -12,9 +12,7 @@ from sklearn.metrics import roc_auc_score, roc_curve, auc
 from sklearn.metrics import precision_score, recall_score, accuracy_score, f1_score
 
 
-# Function for drawing ROC curve for train and test data
-
-def ROC_curve_train_test(dataNumber, X_tr, y_tr, X_te, y_te, xgbParams, model_name):
+def ROC_curve_train_test(dataNumber, X_tr, y_tr, X_te, y_te, model, model_name, save=0):
     
     """
     This is a function to draw an ROC curve overlaying training and testing results for selected parameters.
@@ -24,13 +22,15 @@ def ROC_curve_train_test(dataNumber, X_tr, y_tr, X_te, y_te, xgbParams, model_na
     y_tr: training labels
     X_te: testing data
     y_te: testinglabels
-    xgbParams: XGBClassifier parameters used to create the model
+    model: Classifier model, previously fit on training data
+    model_name: Title of model
+    save: Bool parameter to control saving the plot
     """
     
     fig, ax = plt.subplots(figsize=(10, 8))
 
-    model = XGBClassifier(**xgbParams)
-    model.fit(X_tr, y_tr)
+    #model = XGBClassifier(**xgbParams)
+    #model.fit(X_tr, y_tr)
       
     y_train_pred = model.predict(X_tr)   
     y_train_prob = model.predict_proba(X_tr) #Probability estimates for each class
@@ -57,17 +57,19 @@ def ROC_curve_train_test(dataNumber, X_tr, y_tr, X_te, y_te, xgbParams, model_na
     ax.plot([0, 1], [0, 1], color='navy', lw=2, linestyle='--')
     ax.set_xlim([0.0, 1.0])
     ax.set_ylim([0.0, 1.05])
-    ax.set_yticks([i/20.0 for i in range(21)])
-    ax.set_xticks([i/20.0 for i in range(21)])
+    #ax.set_yticks([i/20.0 for i in range(21)])
+    #ax.set_xticks([i/20.0 for i in range(21)])
     ax.set_xlabel('False Positive Rate (FPR)', fontsize=14)
     ax.set_ylabel('True Positive Rate (TPR)', fontsize=14)
     ax.set_title(f'ROC Curve for Data {dataNumber}, {model_name}', fontsize=14)
     ax.legend(loc='auto', fontsize=13)
     
-    plt.savefig(f'figures/ROC_Curve_d{dataNumber}_{model_name}.png')
+    
+    if save:
+        plt.savefig(f'figures/ROC_Curve_d{dataNumber}_{model_name}.png')
 
 
-def scan_xgb_overlay(dataNumber, X_tr, y_tr, X_te, y_te, xgbParams, scanParam, scanList):
+def scan_xgb_overlay(dataNumber, X_tr, y_tr, X_te, y_te, xgbParams, scanParam, scanList, save=0):
 
     """
     This is a function to scan over XGBClassifier parameters. 
@@ -82,6 +84,7 @@ def scan_xgb_overlay(dataNumber, X_tr, y_tr, X_te, y_te, xgbParams, scanParam, s
     xgbParams: XGBClassifier parameters used to create the model
     scanParam: the XGBClassifier parameter, which will be scanned
     scanList: the list of the values to be scanned; any size is OK.
+    save: Bool parameter to control saving the plot
     """
     
     fig, ax = plt.subplots(1, figsize=(10, 8))
@@ -117,12 +120,17 @@ def scan_xgb_overlay(dataNumber, X_tr, y_tr, X_te, y_te, xgbParams, scanParam, s
         precision_test = round(precision_score(y_te, y_test_pred),3)
         accuracy_test = round(accuracy_score(y_te, y_test_pred),3)
        
+        prec_diff = precision_train - precision_test
+        prec_diff_scaled = prec_diff/precision_test
+        
         fit_scores_train = {'Params': f'{scanParam}={s}  Train ',
                         'accuracy': accuracy_train,
                         'precision': precision_train,
                         'recall': recall_train,
                         'f1': f1_train,
-                        'auc': auc_train
+                        'auc': auc_train,
+                        'prec_diff': prec_diff,
+                        'prec_diff_scaled': prec_diff_scaled,
                        }
     
         fit_scores_test = {'Params': f'Test',
@@ -130,12 +138,13 @@ def scan_xgb_overlay(dataNumber, X_tr, y_tr, X_te, y_te, xgbParams, scanParam, s
                         'precision': precision_test,
                         'recall': recall_test,
                         'f1': f1_test,
-                        'auc': auc_test
+                        'auc': auc_test,
+                        'prec_diff': prec_diff,
+                        'prec_diff_scaled': prec_diff_scaled,
                        }
     
         model_scores_list.append(fit_scores_train)
         model_scores_list.append(fit_scores_test)
-
     
         ax.plot(fpr_train, tpr_train, lw=2, color=cp[i], linestyle='dashed', label=f"Train, {scanParam}={s}")
         ax.plot(fpr_test, tpr_test, lw=2, color=cp[i], label=f"Test, {scanParam}={s}")  
@@ -153,13 +162,14 @@ def scan_xgb_overlay(dataNumber, X_tr, y_tr, X_te, y_te, xgbParams, scanParam, s
     model_scores_df = model_scores_df.set_index('Params')
     #print(model_scores_df)
     
-    plt.savefig(f'figures/ROC_Curve_d{dataNumber}_{scanParam}_overlay.png')
+    if save:
+        plt.savefig(f'figures/ROC_Curve_d{dataNumber}_{scanParam}_overlay.png')
     
     return model_scores_df
 
 
 
-def scan_xgb(dataNumber, X_tr, y_tr, X_te, y_te, xgbParams, scanParam, scanList):
+def scan_xgb(dataNumber, X_tr, y_tr, X_te, y_te, xgbParams, scanParam, scanList, save=0):
 
     """
     This is a function to scan over XGBClassifier parameters. 
@@ -174,6 +184,7 @@ def scan_xgb(dataNumber, X_tr, y_tr, X_te, y_te, xgbParams, scanParam, scanList)
     xgbParams: XGBClassifier parameters used to create the model
     scanParam: the XGBClassifier parameter, which will be scannes
     scanList: the list of the values to be scanned; The required list size is 6.
+    save: Bool parameter to control saving the plot
     """
     
     fig, axes = plt.subplots(3, 2, figsize=(20, 20))
@@ -243,66 +254,9 @@ def scan_xgb(dataNumber, X_tr, y_tr, X_te, y_te, xgbParams, scanParam, scanList)
     model_scores_df = model_scores_df.set_index('Params')
     #print(model_scores_df)
     
-    plt.savefig(f'figures/ROC_Curve_d{dataNumber}_{scanParam}.png')
+    if save:
+        plt.savefig(f'figures/ROC_Curve_d{dataNumber}_{scanParam}.png')
     
     return model_scores_df
     
-
-
-def ROC_curve_train_test_label(model, model_name, label):
     
-    """
-    # Function for drawing ROC curve for train and test data
-    # The function still has some problems...
-    
-    model: the classifier object
-    model_name: title of the classifier object
-    label: class label (0 or 1)
-    
-    """
-    
-    fig, ax = plt.subplots(figsize=(10, 8))
-
-    #model.fit(X_train_rs, y_train_rs)
-      
-    y_train_pred = model.predict(X_train_rs)   
-    y_train_prob = model.predict_proba(X_train_rs) #Probability estimates for each class
-    fpr_train, tpr_train, thresholds_train = roc_curve(y_train_rs, y_train_prob[:,label])
-    #fpr_train, tpr_train, thresholds_train = roc_curve(y_train_rs, y_train_prob[:,label], pos_label=label)
-    auc_train = round(auc(fpr_train, tpr_train),3)
-    f1_train = round(f1_score(y_train_rs, y_train_pred, pos_label=label),3)
-    recall_train = round(recall_score(y_train_rs, y_train_pred, pos_label=label),3)
-    precision_train = round(precision_score(y_train_rs, y_train_pred, pos_label=label),3)
-    ax.plot(fpr_train, tpr_train, lw=2, label=f'Train: precison={precision_train}, recall={recall_train}, f1={f1_train}, AUC={auc_train}')
-    #ax.plot(fpr_train, tpr_train, lw=2, label=f'Train: AUC={auc_train}')
-    
-    y_test_pred = model.predict(X_test)
-    y_test_prob = model.predict_proba(X_test) #Probability estimates for each class
-    fpr_test, tpr_test, thresholds_test = roc_curve(y_test, y_test_prob[:,label])
-    #fpr_test, tpr_test, thresholds_test = roc_curve(y_test, y_test_prob[:,label], pos_label=label)
-    auc_test = round(auc(fpr_test, tpr_test),3)
-    f1_test = round(f1_score(y_test, y_test_pred, pos_label=label),3)
-    recall_test = round(recall_score(y_test, y_test_pred, pos_label=label),3)
-    precision_test = round(precision_score(y_test, y_test_pred, pos_label=label),3)
-    ax.plot(fpr_test, tpr_test, lw=2, label=f'Test: precison={precision_test}, recall={recall_test}, f1={f1_test}, AUC={auc_test}')
-    #ax.plot(fpr_test, tpr_test, lw=2, label=f'Test: AUC={auc_test}')
-    
-    
-    if label:
-        x_title = 'False Positive Rate'
-        y_title = 'True Positive Rate'
-    else:
-        x_title = 'False Negative Rate'
-        y_title = 'True Negative Rate'
-    
-    ax.plot([0, 1], [0, 1], color='navy', lw=2, linestyle='--')
-    ax.set_xlim([0.0, 1.0])
-    ax.set_ylim([0.0, 1.05])
-    ax.set_yticks([i/20.0 for i in range(21)])
-    ax.set_xticks([i/20.0 for i in range(21)])
-    ax.set_xlabel(x_title, fontsize=14)
-    ax.set_ylabel(y_title, fontsize=14)
-    ax.set_title(f'ROC Curve for {model_name}, class={label}', fontsize=14)
-    ax.legend(loc='auto', fontsize=13)
-    
-    plt.savefig(f'figures/ROC_Curve_{model_name}_class{label}.png')
