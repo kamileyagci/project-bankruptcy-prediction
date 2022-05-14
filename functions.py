@@ -515,10 +515,9 @@ def compare_models(dataNumber, X_tr, y_tr, X_te, y_te, model_list, model_names_l
         ax.legend(loc='auto', fontsize=13)
         ax.set_xlim([0.0, 1.0])
         ax.set_ylim([0.0, 1.05])
-        
           
-    if save and plot:
-        plt.savefig(f'figures/ROC_modelCompare_{title}_d{dataNumber}.png')
+        if save:
+            plt.savefig(f'figures/ROC_modelCompare_{title}_d{dataNumber}.png')
 
     return model_scores_df
 
