@@ -497,8 +497,10 @@ def compare_models(dataNumber, X_tr, y_tr, X_te, y_te, model_list, model_names_l
         model_scores_list.append(fit_scores_test)
     
         if plot:
-            label_train = f"{model_names_list[i]} Train: prec={precision_train}, rec={recall_train}, f1={f1_train}, acc={accuracy_train}, AUC={auc_train}"
-            label_test = f"{model_names_list[i]} Test: prec={precision_test}, rec={recall_test}, f1={f1_test}, acc={accuracy_test}, AUC={auc_test}"
+            #label_train = f"{model_names_list[i]} Train: prec={precision_train}, rec={recall_train}, f1={f1_train}, acc={accuracy_train}, AUC={auc_train}"
+            #label_test = f"{model_names_list[i]} Test: prec={precision_test}, rec={recall_test}, f1={f1_test}, acc={accuracy_test}, AUC={auc_test}"
+            label_train = f"{model_names_list[i]} Train"
+            label_test = f"{model_names_list[i]} Test"
             ax.plot(fpr_train, tpr_train, lw=2, color=cp[i], linestyle='dashed', label=label_train)
             ax.plot(fpr_test, tpr_test, lw=2, color=cp[i], label=label_test)  
 
@@ -508,13 +510,13 @@ def compare_models(dataNumber, X_tr, y_tr, X_te, y_te, model_list, model_names_l
     #print(model_scores_df)
             
     if plot:    
-        ax.plot([0, 1], [0, 1], color='0.7', lw=2, linestyle='-.')
+        #ax.plot([0, 1], [0, 1], color='0.7', lw=2, linestyle='-.')
         ax.set_xlabel('False Positive Rate', fontsize=14)
         ax.set_ylabel('True Positive Rate', fontsize=14)
         ax.set_title(f"ROC Curve for Data {dataNumber}, Model Comparison", fontsize=14)
         ax.legend(loc='auto', fontsize=13)
         ax.set_xlim([0.0, 1.0])
-        ax.set_ylim([0.0, 1.05])
+        ax.set_ylim([0.5, 1.05])
           
         if save:
             plt.savefig(f'figures/ROC_modelCompare_{title}_d{dataNumber}.png')
