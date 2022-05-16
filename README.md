@@ -57,9 +57,8 @@ The data contains the financial information and bankruptcy status of Polish comp
 The data is collected from Emerging Markets Information Service (EMIS, [Web Link]).
 
 Data was collected in the period of
-
-    * 2000-2012 for the bankrupt companies
-    * 2007-2013 for the still operating companies
+* 2000-2012 for the bankrupt companies
+* 2007-2013 for the still operating companies
 
 Depending on the forecasting period, dataset is classified in five categories/files:
 
