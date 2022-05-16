@@ -22,8 +22,8 @@ In this study, I will analyze the financial standings of the Polish companies to
 * .gitignore: text file that contains the list of files/directories that should not be tracked by git repository
 * README.md: markdown file that describes the git repository and the project
 * analysis_1_explore.ipynb: jupyter notebook for analysis part 1, data exploring
-* analysis_2_imbalance.ipynb: jupyter notebook for analysis part 2, class imbalance study for Dataset 3 '3year.arff' 
-* analysis_3_data3.ipynb: jupyter notebook for analysis part 3, XGBoost Classification for Dataset 3 '3year.arff' 
+* analysis_2_imbalance.ipynb: jupyter notebook for analysis part 2, class imbalance study for Data 3
+* analysis_3_data3.ipynb: jupyter notebook for analysis part 3, XGBoost Classification for Data 3
 * analysis_4_dataAll.ipynb: jupyter notebook for analysis part 4, XGBoost Classification for all data sets AND Interpretation of Results
 * functions.py: python file containing the functions used in the analysis
 
@@ -70,11 +70,11 @@ Depending on the forecasting period, data is classified in five categories/files
 
 In my analysis, I name the five data files as:
 
-* data1, 1year.arff 
-* data2, 2year.arff 
-* data3, 3year.arff
-* data4, 4year.arff
-* data5, 5year.arff
+* Data 1: 1year.arff 
+* Data 2: 2year.arff 
+* Data 3: 3year.arff
+* Data 4: 4year.arff
+* Data 5: 5year.arff
 
 UCI Link: https://archive.ics.uci.edu/ml/datasets/Polish+companies+bankruptcy+data
 
