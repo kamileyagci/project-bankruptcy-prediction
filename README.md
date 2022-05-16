@@ -52,6 +52,32 @@ KPMG, international corporate financial consulting firm, hired me to analyze the
 
 ## Data
 
+The data contains the financial information and bankruptcy status of Polish companies. 
+
+The data is collected from Emerging Markets Information Service (EMIS, [Web Link]).
+
+Data was collected in the period of
+    * 2000-2012 for the bankrupt companies
+    * 2007-2013 for the still operating companies
+
+Depending on the forecasting period, data is classified in five categories/files:
+
+* 1stYear: the data contains financial rates from 1st year of the forecasting period and corresponding class label that indicates bankruptcy status after 5 years.
+* 2ndYear: the data contains financial rates from 2nd year of the forecasting period and corresponding class label that indicates bankruptcy status after 4 years.
+* 3rdYear: the data contains financial rates from 3rd year of the forecasting period and corresponding class label that indicates bankruptcy status after 3 years.
+* 4thYear: the data contains financial rates from 4th year of the forecasting period and corresponding class label that indicates bankruptcy status after 2 years. 
+* 5thYear: the data contains financial rates from 5th year of the forecasting period and corresponding class label that indicates bankruptcy status after 
+
+In my analysis, I name the five data files as:
+
+* data1, 1year.arff 
+* data2, 2year.arff 
+* data3, 3year.arff
+* data4, 4year.arff
+* data5, 5year.arff
+
+UCI Link: https://archive.ics.uci.edu/ml/datasets/Polish+companies+bankruptcy+data
+
 
 ## Method
 
