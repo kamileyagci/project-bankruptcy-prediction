@@ -7,7 +7,7 @@
 
 ## Overview
 
-In this study, I will analyze the financial standings of the Polish companies to identify whether the company will banckrupt in 1-5 years. I will use the Ensemble Method 'XGBoost', eXtreme Gradient Boosting for classification. 
+In this study, I will analyze the financial standings of the Polish companies to identify whether the company will banckrupt in 1-5 years. I will use the Ensemble Method 'XGBoost', eXtreme Gradient Boosting, for classification. 
 
 
 <a href="//commons.wikimedia.org/wiki/File:Panorama_siekierkowski.jpg" title="Panorama Warszawy z mostu Siekierkowskiego, 2020"><img src="/figures/Panorama_siekierkowski.jpeg"/></a>
@@ -20,13 +20,12 @@ In this study, I will analyze the financial standings of the Polish companies to
 * notUsed: directory containing some prelimenary analysis, which is not part of the latest version of the project
 * saved_models: directory containing the saved models
 * .gitignore: text file that contains the list of files/directories that should not be tracked by git repository
-* README.md: markdown file that described the git repository and project
+* README.md: markdown file that describes the git repository and the project
 * analysis_1_explore.ipynb: jupyter notebook for analysis part 1, data exploring
-* analysis_2_imbalance.ipynb: jupyter notebook for analysis part 2, class imbalance study
+* analysis_2_imbalance.ipynb: jupyter notebook for analysis part 2, class imbalance study for Dataset 3 '3year.arff' 
 * analysis_3_data3.ipynb: jupyter notebook for analysis part 3, XGBoost Classification for Dataset 3 '3year.arff' 
 * analysis_4_dataAll.ipynb: jupyter notebook for analysis part 4, XGBoost Classification for all data sets AND Interpretation of Results
 * functions.py: python file containing the functions used in the analysis
-
 
 
 ## Project Outline
@@ -35,15 +34,15 @@ In this study, I will analyze the financial standings of the Polish companies to
 * Data
 * Methods
 * Analysis and Results
-    * Baseline Model
-    * Baseline + Regularization Model
-    * Baseline + Dropout Layers Model
-    * Baseline Model + Augmentation
-    * New Model with more Layers and optimizer='Adam'
-    * Train on whole dataset, Baseline Model with optimizer='Adam'
-    * Final Model
+    * Class Imbalance Study for Dataset 3
+        * ???
+    * XGBoost Classification on Dataset 3
+        * ???
+    * XGBoost Classification on all five datasets
+        * ??
+        * Final Model
 * Conclusion
-* Next Steps
+* Future Work
 
 
 ## Business Problem
