@@ -52,11 +52,9 @@ KPMG, international corporate financial consulting firm, hired me to analyze the
 
 ## Data
 
-The data contains the financial information and bankruptcy status of Polish companies. 
+The data contains the financial information and bankruptcy status of Polish companies. It is collected from Emerging Markets Information Service (EMIS, [Web Link]).
 
-The data is collected from Emerging Markets Information Service (EMIS, [Web Link]).
-
-Data was collected in the period of
+The data was collected in the period of
 * 2000-2012 for the bankrupt companies
 * 2007-2013 for the still operating companies
 
@@ -70,11 +68,11 @@ Depending on the forecasting period, dataset is classified in five categories/fi
 
 In my analysis, I name the five data files as:
 
-* Data 1: 1year.arff 
-* Data 2: 2year.arff 
-* Data 3: 3year.arff
-* Data 4: 4year.arff
-* Data 5: 5year.arff
+* Data 1: '1year.arff'
+* Data 2: '2year.arff'
+* Data 3: '3year.arff'
+* Data 4: '4year.arff'
+* Data 5: '5year.arff'
 
 UCI Link: https://archive.ics.uci.edu/ml/datasets/Polish+companies+bankruptcy+data
 
