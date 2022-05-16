@@ -58,13 +58,15 @@ The data was collected in the period of
 * 2000-2012 for the bankrupt companies
 * 2007-2013 for the still operating companies
 
-Depending on the forecasting period, dataset is classified in five categories/files:
+Depending on the forecasting period, the data is classified in five categories/datasets.:
 
-* 1stYear: the data contains financial rates from 1st year of the forecasting period and corresponding class label that indicates bankruptcy status after 5 years.
-* 2ndYear: the data contains financial rates from 2nd year of the forecasting period and corresponding class label that indicates bankruptcy status after 4 years.
-* 3rdYear: the data contains financial rates from 3rd year of the forecasting period and corresponding class label that indicates bankruptcy status after 3 years.
-* 4thYear: the data contains financial rates from 4th year of the forecasting period and corresponding class label that indicates bankruptcy status after 2 years. 
-* 5thYear: the data contains financial rates from 5th year of the forecasting period and corresponding class label that indicates bankruptcy status after 
+* 1st Year: the data contains financial rates from 1st year of the forecasting period and corresponding class label that indicates bankruptcy status after 5 years (1year.arff).
+* 2nd Year: the data contains financial rates from 2nd year of the forecasting period and corresponding class label that indicates bankruptcy status after 4 years (2year.arff).
+* 3rd Year: the data contains financial rates from 3rd year of the forecasting period and corresponding class label that indicates bankruptcy status after 3 years (3year.arff).
+* 4th Year: the data contains financial rates from 4th year of the forecasting period and corresponding class label that indicates bankruptcy status after 2 years (4year.arff). 
+* 5th Year: the data contains financial rates from 5th year of the forecasting period and corresponding class label that indicates bankruptcy status after 1 year (1year.arff).
+
+UCI Link: https://archive.ics.uci.edu/ml/datasets/Polish+companies+bankruptcy+data
 
 In my analysis, I name the five data files as:
 
@@ -74,21 +76,77 @@ In my analysis, I name the five data files as:
 * Data 4: '4year.arff'
 * Data 5: '5year.arff'
 
-UCI Link: https://archive.ics.uci.edu/ml/datasets/Polish+companies+bankruptcy+data
+The number of files in each dataset and class distribution:
+
+| Data # | Total | Still Operating Companies (class=0) | Bankrupt Companies (class=1) |
+| :- | -: | :-: | :-: |
+| Data 1 | 7027 | 6756 | 271 
+| Data 2 | 10173 | 9773 | 400 
+| Data 3 | 10503 | 10008 | 495
+| Data 4 | 9792 | 9277 | 515
+| Data 5 | 5910 | 5500 | 410
+
 
 
 ## Method
+
+I will use Ensemble Method 'XGBoost', eXtreme Gradient Boosting, for classification. This is a binary classification problem, since my goal is to identify whether the company will bankrupt or not. 
 
 I will focus on the performance of 'recall' metric in order to minimize false negatives. Besides, I will also keep an eye on 'f1', and 'AUC' metrics.
 
 
 ## Analysis and Results
 
+### Class Imbalance
+
+
+
 
 ## Conclusion
+
+5-year Period (Data 1):
+    * Model successfully identifies the 80.4 of the true bankrupt companies, which will bankrupt 5 years later. (recall)
+    * Among the model predicted bankruptcy companies, 64.1% of them are true bankrupt companies, which will bankrupt 5 years later. (precision)
+    * The Harmonic Mean of Precision and Recall (f1-score) is 71.3%.
+    
+4-year Period (Data 2):
+    * Model successfully identifies the 62.0 of the true bankrupt companies, which will bankrupt 4 years later. (recall)
+    * Among the model predicted bankruptcy companies, 50.6% of them are true bankrupt companies, which will bankrupt 4 years later. (precision)
+    * The Harmonic Mean of Precision and Recall (f1-score) is 55.7%.
+    
+3-year Period (Data 3):
+    * Model successfully identifies the 72.0 of the true bankrupt companies, which will bankrupt 3 years later. (recall)
+    * Among the model predicted bankruptcy companies, 53.5% of them are true bankrupt companies, which will bankrupt 3 years later. (precision)
+    * The Harmonic Mean of Precision and Recall (f1-score) is 61.4%.
+
+2-year Period (Data 4):
+    * Model successfully identifies the 68.0 of the true bankrupt companies, which will bankrupt 2 years later. (recall)
+    * Among the model predicted bankruptcy companies, 55.6% of them are true bankrupt companies, which will bankrupt 2 years later. (precision)
+    * The Harmonic Mean of Precision and Recall (f1-score) is 61.1%.
+    
+1-year Period (Data 5):
+    * Model successfully identifies the 78.9 of the true bankrupt companies, which will bankrupt 1 years later. (recall)
+    * Among the model predicted bankruptcy companies, 60.7% of them are true bankrupt companies, which will bankrupt 1 years later. (precision)
+    * The Harmonic Mean of Precision and Recall (f1-score) is 68.6%.
+
+On Average:
+    * Model successfully identifies the 72.3 of the true bankrupt companies. (recall)
+    * Among the model predicted bankruptcy companies, 56.9% of them are true bankrupt companies. (precision)
+    * The Harmonic Mean of Precision and Recall (f1-score) is 63.6%.
+    
+**Best common predictors**
+
+* X27 profit on operating activities / financial expenses
+* X34 operating expenses / total liabilities
+* X5 [(cash + short-term securities + receivables - short-term liabilities) / (operating expenses - depreciation)] * 365
+ 
 
 
 ## Future Work
 
+* The model performance is not very good and overfitting is large. Search for alternative methods to improve performance.
 
+* Each dataset can be optimized (with parameter tuning) seperately and create 5 different models, instead of one model. This will increase the overall performance.
+
+* Created functions are long and repeating. Update them.
 
