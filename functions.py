@@ -7,7 +7,10 @@ from scipy.io import arff
 import matplotlib.pyplot as plt
 import seaborn as sns
 
+from sklearn.model_selection import train_test_split
+from sklearn.preprocessing import StandardScaler
 from xgboost import XGBClassifier
+
 from sklearn.metrics import roc_auc_score, roc_curve, auc
 from sklearn.metrics import precision_score, recall_score, accuracy_score, f1_score
 from sklearn.utils import class_weight
@@ -34,7 +37,55 @@ def xgb_model_report(dataNumber, X_tr, y_tr, X_te, y_te, xgbParams, model_name, 
     weigths_train = None
     
     if weights:
-        print('Sample weights are used!\n--------\n')
+        print('Sample weights are used!')
+        weigths_train = class_weight.compute_sample_weight(class_weight='balanced', y=y_tr)
+        
+    d_eval_set = [(X_tr, y_tr), (X_te, y_te)]  
+    
+    clf = XGBClassifier(**xgbParams) 
+    clf.fit(X_tr, y_tr, sample_weight=weigths_train, eval_set=d_eval_set, verbose=False)
+    
+    if print_report:
+        print(f'Data {dataNumber} Classification Report:\n')
+        print('Training Data:\n', classification_report(y_tr, clf.predict(X_tr)))
+        print('Testing Data:\n', classification_report(y_te, clf.predict(X_te)))
+    
+    if save_model:
+        clf.save_model(f'saved_model_history/xgb_data{dataNumber}_{model_name}.json')
+           
+    return clf
+
+
+def xgb_model_report2(dataNumber, df, xgbParams, model_name, weights=0, save_model=0, print_report=0):
+
+    """
+    This is a function to that runs XGBClassifier with the given parameters and print the classification report. 
+    Returns to the model.
+    
+    dataNumber: # for Data file in use (1, 2, 3, 4, 5)
+    df: Dataframe
+    xgbParams: XGBClassifier parameters used to create the model
+    weights: Bool parameter to use sample_weights or not.
+    save_model: Bool parameter to control saving the model
+    print_report: Bool parameter to control printing the report
+    """
+    
+    #Pre-process data
+    y = df['class']
+    X = df.drop('class', axis=1)
+
+    X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.20, random_state=42)
+
+    scaler = StandardScaler()
+    X_tr = scaler.fit_transform(X_train)
+    X_te = scaler.transform(X_test)
+    y_tr = y_train.to_numpy()
+    y_te = y_test.to_numpy()
+    
+    weigths_train = None
+    
+    if weights:
+        print('Sample weights are used!')
         weigths_train = class_weight.compute_sample_weight(class_weight='balanced', y=y_tr)
         
     d_eval_set = [(X_tr, y_tr), (X_te, y_te)]  
@@ -175,7 +226,7 @@ def scan_xgb_ROC_metrics(dataNumber, X_tr, y_tr, X_te, y_te, xgbParams, scanPara
     weigths_train = None
     
     if weights:
-        print('Sample weights are used!\n--------\n')
+        print('Sample weights are used!')
         weigths_train = class_weight.compute_sample_weight(class_weight='balanced', y=y_tr)
     
     for i,s in enumerate(scanList):
@@ -317,7 +368,7 @@ def scan_xgb_logloss_metrics(dataNumber, X_tr, y_tr, X_te, y_te, xgbParams, scan
     weigths_train = None
     
     if weights:
-        print('Sample weights are used!\n--------\n')
+        print('Sample weights are used!')
         weigths_train = class_weight.compute_sample_weight(class_weight='balanced', y=y_tr)
     
     d_eval_set = [(X_tr, y_tr), (X_te, y_te)]
@@ -523,7 +574,189 @@ def compare_models(dataNumber, X_tr, y_tr, X_te, y_te, model_list, model_names_l
 
     return model_scores_df
 
+
+def compare_datafiles_perf(df_list, xgbParams, title, weights, plot=1, save=0):
+
+    """
+    This is a function to compare datsets performance. 
+    It creates  ROC curve and calculate metrics: 
+    Returns to dataframe of listing evaluation metrics.
     
+    df_list: # DataFrame list to be used for comparison
+    xgbParams: XGBClassifier parameters used to create the model
+    weights: Bool parameter to use sample_weights or not.
+    title: title of comparison plot
+    plot: Bool parameter to control creating the plot
+    save: Bool parameter to control saving the plot
+    """
+    
+    print(f'------{title}------')   
+
+    if plot:
+        fig, ax = plt.subplots(figsize=(10, 8))
+        cp = sns.color_palette()
+    
+    model_scores_list = []
+    
+    for i,df in enumerate(df_list):
+
+        #Pre-process data
+        y = df['class']
+        X = df.drop('class', axis=1)
+
+        X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.20, random_state=42)
+
+        scaler = StandardScaler()
+        X_tr = scaler.fit_transform(X_train)
+        X_te = scaler.transform(X_test)
+        y_tr = y_train.to_numpy()
+        y_te = y_test.to_numpy()
+        
+        #Train model
+        weigths_train = None 
+        if weights:
+            print('Sample weights are used!')
+            weigths_train = class_weight.compute_sample_weight(class_weight='balanced', y=y_tr)
+        
+        d_eval_set = [(X_tr, y_tr), (X_te, y_te)]  
+        
+        clf = XGBClassifier(**xgbParams) 
+        clf.fit(X_tr, y_tr, sample_weight=weigths_train, eval_set=d_eval_set, verbose=False)
+        
+        #Calculate evaluation metrics
+        y_train_pred = clf.predict(X_tr)   
+        y_train_prob = clf.predict_proba(X_tr) #Probability estimates for each class
+        fpr_train, tpr_train, thresholds_train = roc_curve(y_tr, y_train_prob[:,1])
+        auc_train = round(auc(fpr_train, tpr_train),3)
+        f1_train = round(f1_score(y_tr, y_train_pred),3)
+        recall_train = round(recall_score(y_tr, y_train_pred),3)
+        precision_train = round(precision_score(y_tr, y_train_pred),3)
+        accuracy_train = round(accuracy_score(y_tr, y_train_pred),3)
+        
+        y_test_pred = clf.predict(X_te)
+        y_test_prob = clf.predict_proba(X_te) #Probability estimates for each class
+        fpr_test, tpr_test, thresholds_test = roc_curve(y_te, y_test_prob[:,1])
+        auc_test = round(auc(fpr_test, tpr_test),3)
+        f1_test = round(f1_score(y_te, y_test_pred),3)
+        recall_test = round(recall_score(y_te, y_test_pred),3)
+        precision_test = round(precision_score(y_te, y_test_pred),3)
+        accuracy_test = round(accuracy_score(y_te, y_test_pred),3)
+
+        
+        fit_scores_train = {'Data': f'Data {i+1}',
+                        'Sample': 'Train',
+                        'precision': precision_train,
+                        'recall': recall_train,
+                        'f1': f1_train,
+                        'accuracy': accuracy_train,
+                        'auc': auc_train,
+                           }
+    
+        fit_scores_test = {'Data': f'Data {i+1}',
+                        'Sample': 'Test',
+                        'precision': precision_test,
+                        'recall': recall_test,
+                        'f1': f1_test,
+                        'accuracy': accuracy_test,
+                        'auc': auc_test,
+                          }
+    
+        model_scores_list.append(fit_scores_train)
+        model_scores_list.append(fit_scores_test)
+    
+        if plot:
+            #label_train = f"{model_names_list[i]} Train: prec={precision_train}, rec={recall_train}, f1={f1_train}, acc={accuracy_train}, AUC={auc_train}"
+            #label_test = f"{model_names_list[i]} Test: prec={precision_test}, rec={recall_test}, f1={f1_test}, acc={accuracy_test}, AUC={auc_test}"
+            label_train = f"Data {i+1} Train"
+            label_test = f"Data {i+1} Test"
+            ax.plot(fpr_train, tpr_train, lw=2, color=cp[i], linestyle='dashed', label=label_train)
+            ax.plot(fpr_test, tpr_test, lw=2, color=cp[i], label=label_test)  
+
+                 
+    #Create DataFrame
+    model_scores_df = pd.DataFrame(model_scores_list)      
+    
+    #Calculate averages
+    select_row_train = [i*2 for i in range(0, len(df_list))]
+    select_row_test = [i*2+1 for i in range(0, len(df_list))]
+    rec_train_list = model_scores_df['recall'].iloc[select_row_train]
+    rec_test_list = model_scores_df['recall'].iloc[select_row_test]
+    f1_train_list = model_scores_df['f1'].iloc[select_row_train]
+    f1_test_list = model_scores_df['f1'].iloc[select_row_test]
+    prec_train_list = model_scores_df['precision'].iloc[select_row_train]
+    prec_test_list = model_scores_df['precision'].iloc[select_row_test]
+    acc_train_list = model_scores_df['accuracy'].iloc[select_row_train]
+    acc_test_list = model_scores_df['accuracy'].iloc[select_row_test]
+    auc_train_list = model_scores_df['auc'].iloc[select_row_train]
+    auc_test_list = model_scores_df['auc'].iloc[select_row_test]
+    
+        
+    train_avg_dic = {'Data': 'Average',
+                     'Sample':'Train',
+                     'precision': np.mean(prec_train_list),
+                     'recall': np.mean(rec_train_list), 
+                     'f1': np.mean(f1_train_list),
+                     'accuracy': np.mean(acc_train_list),
+                     'auc': np.mean(auc_train_list),
+                    }
+    
+    test_avg_dic = {'Data': 'Average',
+                    'Sample': 'Test',
+                    'precision': np.mean(prec_test_list),
+                    'recall': np.mean(rec_test_list),
+                    'f1': np.mean(f1_test_list),
+                    'accuracy': np.mean(acc_test_list),
+                    'auc': np.mean(auc_test_list)
+                    }
+    
+    #Add average rows to DataFrame
+    model_scores_df = model_scores_df.append([train_avg_dic, test_avg_dic], ignore_index=True)
+    
+    #Set Dataframe index
+    model_scores_df = model_scores_df.set_index('Data')    
+        
+    if plot:    
+        #ax.plot([0, 1], [0, 1], color='0.7', lw=2, linestyle='-.')
+        ax.set_xlabel('False Positive Rate', fontsize=14)
+        ax.set_ylabel('True Positive Rate', fontsize=14)
+        ax.set_title(f"ROC Curve, Dataset Comparison for {title}", fontsize=14)
+        ax.legend(loc='auto', fontsize=13)
+        ax.set_xlim([0.0, 1.0])
+        ax.set_ylim([0.5, 1.05])
+          
+        if save:
+            plt.savefig(f'figures/ROC_dataCompare_{title}.png')
+    
+    return model_scores_df
+
+
+def plot_compare_model_metricsAvg(metrics_df_list, model_names_list, save=0):
+        
+    fig, axes = plt.subplots(2, 2, figsize=(20, 16))
+    cp = sns.color_palette()
+    
+    metrics=['precision', 'recall', 'f1', 'auc']
+    
+    data_list=['Data 1', 'Data 1', 'Data 3', 'Data 4', 'Data 5']
+    
+    for i,df in enumerate(metrics_df_list):
+        
+        for m,ax in enumerate(axes.flat):
+            
+            ax.plot(df[df['Sample']=='Train'].iloc[:-1][metrics[m]], 
+                   color=cp[i], marker='o', linestyle='dashed', label=f'{model_names_list[i]} Train')
+        
+            ax.plot(df[df['Sample']=='Test'].iloc[:-1][metrics[m]], 
+                   color=cp[i],marker='o', label=f'{model_names_list[i]} Test')
+
+            ax.set_xticklabels(data_list, fontsize=14)
+            ax.set_ylabel(f'{metrics[m]} Average', fontsize=16)
+            ax.legend(loc='auto', fontsize=13)
+            ax.set_ylim([0, 1.05])
+        
+    if save:
+        plt.savefig(f'figures/Metrics_CompareModels_AllData.png')
+
 
 def plot_scan6_xgb(dataNumber, X_tr, y_tr, X_te, y_te, xgbParams, scanParam, scanList, weights, save=0):
 
@@ -552,7 +785,7 @@ def plot_scan6_xgb(dataNumber, X_tr, y_tr, X_te, y_te, xgbParams, scanParam, sca
     weigths_train = None
     
     if weights:
-        print('Sample weights are used!\n--------\n')
+        print('Sample weights are used!')
         weigths_train = class_weight.compute_sample_weight(class_weight='balanced', y=y_tr)
     
     for ax, s in zip(axes.flat, scanList):
