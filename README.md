@@ -5,7 +5,7 @@
 **Blog URL: https://kamileyagci.github.io/**
 
 
-<a href="<//commons.wikimedia.org/wiki/File:Panorama_siekierkowski.jpg>" title="Panorama Warszawy z mostu Siekierkowskiego, 2020"><img src="/figures/Panorama_siekierkowski.jpeg"/></a>
+<a href="<https://commons.wikimedia.org/wiki/File:Panorama_siekierkowski.jpg>" title="Panorama Warszawy z mostu Siekierkowskiego, 2020"><img src="/figures/Panorama_siekierkowski.jpeg"/></a>
 
 
 
