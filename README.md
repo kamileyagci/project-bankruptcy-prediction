@@ -76,9 +76,9 @@ In my analysis, I name the five data files as:
 * Data 4: '4year.arff'
 * Data 5: '5year.arff'
 
-The number of files in each dataset and class distribution:
+The number of companies in each dataset and class distributions:
 
-| Data # | Total | Still Operating Companies (class=0) | Bankrupt Companies (class=1) |
+| Data # | Total | Still Operating (class=0) | Bankrupt (class=1) |
 | :- | -: | :-: | :-: |
 | Data 1 | 7027 | 6756 | 271 
 | Data 2 | 10173 | 9773 | 400 
