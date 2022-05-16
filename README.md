@@ -7,6 +7,8 @@
 
 <a href="//<https://creativecommons.org/licenses/by-sa/4.0>" title="Panorama Warszawy z mostu Siekierkowskiego, 2020" author="Qbolewicz"><imgsrc="/figures/Panorama_siekierkowski.jpeg"/></a>
 
+<a href="//commons.wikimedia.org/wiki/User:Jmabel" title="User:Jmabel"><img src="/figures/Panorama_siekierkowski.jpeg"/></a>
+
 ## Overview
 
 In this study, I will analyze the financial standings of the Polish companies to identify whether the company will banckrupt in 1-5 years. I will use the Ensemble Method 'XGBoost', eXtreme Gradient Boosting for classification. 
