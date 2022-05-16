@@ -90,7 +90,9 @@ The number of companies in each dataset and class distributions:
 
 ## Method
 
-I will use Ensemble Method 'XGBoost', eXtreme Gradient Boosting, for classification. This is a binary classification problem, since my goal is to identify whether the company will bankrupt or not. 
+I will use Ensemble Method 'XGBoost', eXtreme Gradient Boosting, for classification. 
+
+This is a binary classification problem, since my goal is to identify whether the company will bankrupt or not. 
 
 I will focus on the performance of 'recall' metric in order to minimize false negatives. Besides, I will also keep an eye on 'f1', and 'AUC' metrics.
 
@@ -99,6 +101,19 @@ I will focus on the performance of 'recall' metric in order to minimize false ne
 
 ### Class Imbalance
 
+The class imbalance is one of the main issues in this data.
+
+Imbalance Ratio = # of class 0 / # of class 1
+
+$$ Imbalance Ratio = \frac{# of class 0 companies}{# of class 1 companies} $$
+
+| Data # | Imbalance Ratio | Sqrt of Imbalance Ratio |
+| :- | -: | :-: |
+| Data 1 | 24.93 | 4.99 
+| Data 2 | 24.43 | 4.94 
+| Data 3 | 20.22 | 4.50
+| Data 4 | 18.01 | 4.24 
+| Data 5 | 13.41 | 3.66 
 
 
 
