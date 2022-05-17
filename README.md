@@ -223,11 +223,17 @@ I started with baseline model and did improve the performance step by step.
 
 * I have scanned the parameters, which affects the overfitting, step by step in an order as listed at the beginning of 'Model Optimization for Data 3' section.
 
-* The graphs below show the scan results of the selected parameters:
+* Only the the scan results of the selected parameters are shown below.
+
+* n_estimators: ROC curve and metrics
 
 <img src="/figures/scan_nEstimators_depth5.png" width=1200/>
 
+* learning_rate: Log loss and metrics 
+
 <img src="/figures/scan_learningRate_depth5.png" width=1200/>
+
+* L1 and L2 Regularization metrics
 
 <img src="/figures/scan_regularization_depth5.jpeg" width=1200/>
 
