@@ -361,9 +361,9 @@ Model 7 is the best performing, when all datasets are considered.
 <img src="/figures/ROC_dataCompare_final_model.png" width=600/>
 
 
-#### Class 0 predictions for Final Model:
+#### Class 0 predictions for Final Model
 
-The table shows the prediction metrics of the final model for the still still operating companies (class 0).
+The table below shows the prediction metrics of the final model for the still operating companies (class 0).
 
 | Data # | precision | recall | f1 |
 | :- | -: | :-: | :-: |
