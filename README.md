@@ -290,6 +290,8 @@ I started with baseline model and did improve the performance step by step.
 #### Best Model for Data 3
 
 * Model 9, optimized at max_depth=4, is the best model for Data 3.
+    * Maximum recall
+    * Minumum overfitting
 
 * The table below  and the ROC curve compares the performance of models for Data 3:
 
