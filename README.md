@@ -192,7 +192,7 @@ I started with baseline model and did improve the performance step by step.
 * Optimized class balancing method used, in addition to the XGBClassifier default parameters.
 * max_depth=6: sample_weight + scale_pos_weight=20 (~imbalance ratio)
 * Model performance increased compared to Model 1. 
-* See the ROC curve graph below and summary metrics table at the end of 'Model Optimization' section.
+* See the ROC curve graph below and summary metrics table at the end of 'Model Optimization for Data 3' section.
 
 <img src="/figures/ROC_modelCompare_Model_1-2_d3.png" width=600/>
 
@@ -211,10 +211,35 @@ I started with baseline model and did improve the performance step by step.
     * learning_rate = 0.20
     * subsample = 1
 
-* The GridSearch Model improved the model performance
+* The GridSearch Model improved the model performance.
+* However, the large overfitting still exists.
+* See summary metrics table at the end of 'Model Optimization for Data 3' section.
 
 #### Model 7: Optimized Model at max_depth=5
 
+* From Model 4 to Model 7, I have tried to tune the parameters, at max_depth=5, in order to 
+    * decrease overfitting
+    * increase 'recall' metric
+
+* I have scanned the parameters which affects the overfitting, step by step. These parameters are listed at the beginning of 'Model Optimization for Data 3' section.
+
+* The graphs below show the scan results of the selected parameters:
+
+
+
+
+* Optimum paratemters for max_depth=5:
+    'scale_pos_weight': 20,
+    'n_estimators': 125, 
+    'max_depth': 5,
+    'min_child_weight': 3,
+    'gamma': 0,
+    'learning_rate': 0.20,
+    'max_delta_step': 0,
+    'reg_lambda': 0,
+    'reg_alpha': 5,
+    'subsample': 1,
+    'colsample_bytree': 0.7
 
 
 #### Model 9: Optimized Model at max_depth=4
