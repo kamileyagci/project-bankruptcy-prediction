@@ -289,13 +289,13 @@ I started with baseline model and did improve the performance step by step.
 
 #### Best Model for Data 3
 
+* The best model for Data 3 is Model 7.
+
 * The table below  and the ROC curve compares the performance of models for Data 3:
 
 <img src="/figures/table_data3_models.png" width=450/>
 
 <img src="/figures/ROC_modelCompare_Model_1237910_d3.png" width=700/>
-
-* The best model for Data 3 is Model 7.
 
 
 
