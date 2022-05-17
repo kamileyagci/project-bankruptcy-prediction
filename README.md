@@ -185,11 +185,11 @@ I started with baseline model and did improve the performance step by step.
 #### Model 1: Baseline Model
 
 * Default XGBClassifier parameters:
-    * base_score=0.5, booster='gbtree', colsample_bylevel=1, colsample_bynode=1, colsample_bytree=1, eval_metric='logloss', gamma=0, gpu_id=-1, importance_type='gain', interaction_constraints='', learning_rate=0.300000012, max_delta_step=0, max_depth=6, min_child_weight=1, missing=nan, monotone_constraints='()', n_estimators=100, n_jobs=4, num_parallel_tree=1, random_state=42, reg_alpha=0, reg_lambda=1, scale_pos_weight=1, subsample=1, tree_method='exact', validate_parameters=1, verbosity=None
+    * base_score=0.5, booster='gbtree', colsample_bylevel=1, colsample_bynode=1, colsample_bytree=1, eval_metric='logloss', gamma=0, gpu_id=-1, importance_type='gain', interaction_constraints='', learning_rate=0.300000012, max_delta_step=0, **max_depth=6**, min_child_weight=1, missing=nan, monotone_constraints='()', n_estimators=100, n_jobs=4, num_parallel_tree=1, random_state=42, reg_alpha=0, reg_lambda=1, scale_pos_weight=1, subsample=1, tree_method='exact', validate_parameters=1, verbosity=None
 
 #### Model 2: Model with Class Imbalance treated
 
-* Optimized class balancing method used
+* Optimized class balancing method used, in addition to the XGBClassifier default parameters.
 * max_depth=6: sample_weight + scale_pos_weight=20 (~imbalance ratio)
 * Model performance increased compared to Model 1. 
 * See the ROC curve graph below and summary metrics table at the end of 'Model Optimization' section.
