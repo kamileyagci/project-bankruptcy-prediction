@@ -134,7 +134,7 @@ The graphs below show the effect of sample_weight on model performance at severa
 
 The graphs below shows the performance of model as sample_pos_weight varies, at max_depth=4 for Data 3. Left: only scale_pos_weight applied. Right: both sample_weight + scale_pos_weight applied.
 
-<img src="/figures/sample_pos_weight.jpeg" width=1200/>
+<img src="/figures/scale_pos_weight.jpeg" width=1200/>
 
 The comparison of imbalance treatment approached at max_depth=4 for Data 3:
 
