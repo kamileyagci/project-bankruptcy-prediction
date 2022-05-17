@@ -411,9 +411,9 @@ Class 0 predictions:
 
 **Best common predictors**
 
-* X27 profit on operating activities / financial expenses
-* X34 operating expenses / total liabilities
-* X5 [(cash + short-term securities + receivables - short-term liabilities) / (operating expenses - depreciation)] * 365
+* X27: profit on operating activities / financial expenses
+* X34: operating expenses / total liabilities
+* X5: [(cash + short-term securities + receivables - short-term liabilities) / (operating expenses - depreciation)] * 365
  
 
 ## Conclusion
