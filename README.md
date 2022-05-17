@@ -237,7 +237,6 @@ I started with baseline model and did improve the performance step by step.
 
 <img src="/figures/scan_regularization_depth5.jpeg" width=1200/>
 
-
 * Optimum paratemters for max_depth=5:
     * scale_pos_weight = 20,
     * n_estimators = 125, 
@@ -254,6 +253,7 @@ I started with baseline model and did improve the performance step by step.
 
 #### Model 9: Optimized Model at max_depth=4
 
+* Same approach is followed for max_depth=4.
 
 * Optimum paratemters for max_depth=4:
     * scale_pos_weight = 4.5,
@@ -271,6 +271,7 @@ I started with baseline model and did improve the performance step by step.
 
 #### Model 10: Optimized Model at max_depth=6
 
+* Same approach is followed for max_depth=6.
 
 * Optimum paratemters for max_depth=6:
     * scale_pos_weight = 20,
