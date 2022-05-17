@@ -66,9 +66,11 @@ Depending on the forecasting period, the data is classified in five categories/d
 * 4th Year: the data contains financial rates from 4th year of the forecasting period and corresponding class label that indicates bankruptcy status after 2 years (4year.arff). 
 * 5th Year: the data contains financial rates from 5th year of the forecasting period and corresponding class label that indicates bankruptcy status after 1 year (1year.arff).
 
-UCI Link: https://archive.ics.uci.edu/ml/datasets/Polish+companies+bankruptcy+data
+There are 64 attributes for each company. The list of the attributes and their descriptions can be found on UIC page:
 
-In my analysis, I name the five data files as:
+https://archive.ics.uci.edu/ml/datasets/Polish+companies+bankruptcy+data
+
+In my analysis, I name the five dataset files as:
 
 * Data 1: '1year.arff'
 * Data 2: '2year.arff'
@@ -87,12 +89,13 @@ The number of companies in each dataset and class distributions:
 | Data 5 | 5910 | 5500 | 410
 
 
-
 ## Method
 
 I will use Ensemble Method 'XGBoost', eXtreme Gradient Boosting, for classification. 
 
 This is a binary classification problem, since my goal is to identify whether the company will bankrupt or not. 
+
+Evaluation metric for data training = 'logloss'
 
 I will focus on the performance of 'recall' metric in order to minimize false negatives. Besides, I will also keep an eye on 'f1', and 'AUC' metrics.
 
@@ -119,15 +122,22 @@ Imbalance Ratio = (# of class 0 companies) / (# of class 1 companies)
 
 There are two approaches to deal with the class imbalance. I have used both approaches together, since it provided a better result.
 
-1. sample_weight: parameter when training the data.
-    * The weights for training sample are calculated for each dataset seperately and used when during training.
+1. sample_weight: class weight parameter when training the data
+    * The class weights for training sample are calculated for each dataset seperately and used when during training.
 
-2. scale_pos_weight: parameter when initiating the classifier 
+2. scale_pos_weight: class weight parameter when initiating the classifier 
     * I provide certain constant values to initiate the classifier. I either use the imbalance ratio or square root of the imbalance ratio. These values are not exactly same for the datasets, but close enough.
-    * Optimized values:
+    * Optimum values:
         * max_depth=4: scale_pos_weight=4.5 (~square root of imbalance ratio)
         * max_depth=5: scale_pos_weight=20 (~imbalance ratio)
         * max_depth=6: scale_pos_weight=20 (~imbalance ratio)
+
+The below graphs show the effect of sample_weight on model performance:
+
+<img src="/figures/sample_weight.jpeg" width=1200/>
+
+
+
 
 
 ## Conclusion
