@@ -140,7 +140,7 @@ The graphs below shows the performance of model as sample_pos_weight varies, at 
 
 The table below shows the comparison of imbalance treatment approaches at max_depth=4 for Data 3:
 
-<img src="/figures/table_imbalance_depth4.png" width=700/>
+<img src="/figures/table_imbalance_depth4.png" width=650/>
 
 
 **Findings:**
@@ -223,7 +223,7 @@ I started with baseline model and did improve the performance step by step.
 
 #### Best Model for Data 3
 
-<img src="/figures/table_data3_models.png" width=500/>
+<img src="/figures/table_data3_models.png" width=450/>
 
 
 
