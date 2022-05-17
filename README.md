@@ -435,8 +435,8 @@ I had three main challenges in this project:
     * However, I couldn't enforce larger reduction in overfitting, since it causes the precision go below 0.5. which is the random guess probability.
 
 Overall, my model correctly identifies
-    * 72.3 of the true bankrupt companies
-    * 97% of the true still operating companies
+* 72.3% of the true bankrupt companies
+* 97% of the true still operating companies
 
 ## Future Work
 
