@@ -307,17 +307,16 @@ The table below compares the performance of models for Data 3:
 ### Model Performance on All Datasest
 
 I have applied the optimumum models on all five datasets.
-    * Model 7 at max_depth=5
-    * Model 9 at max_depth=4
-    * Model 10 at max_depth=6
+* Model 7 at max_depth=5
+* Model 9 at max_depth=4
+* Model 10 at max_depth=6
 
-<img src="/figures/table_All_models.png" width=450/>
+Metrics graphs for comparison:
 
-* Metrics graphs:
-
-<img src="/figures/Metrics_CompareModels_AllData.png" width=450/>
+<img src="/figures/Metrics_CompareModels_AllData.png" width=1200/>
 
 I also tried to tune the parameters to see if I can get a model performs equally good, better, on all data files. But no success.
+
 
 ### Final Model
 
@@ -336,9 +335,14 @@ Model 7 is the best performing, when all datasets are considered.
     * subsample = 1,
     * colsample_bytree = 0.7
 
-* ROC curve
+* Metrics table:
 
-<img src="/figures/ROC_dataCompare_final_model.png" width=650/>
+<img src="/figures/table_FinalModel-7_AllData.png" width=500/>
+
+* ROC curve:
+
+<img src="/figures/ROC_dataCompare_final_model.png" width=600/>
+
 
 
 ## Conclusion
