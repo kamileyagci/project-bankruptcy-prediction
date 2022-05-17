@@ -112,7 +112,7 @@ Imbalance Ratio = # of class 0 / # of class 1
 $$ Imbalance Ratio = \frac{# of class 0 companies}{# of class 1 companies} $$
 
 ```math
-SE = \frac{\sigma}{\sqrt{n}}
+$ SE = \frac{\sigma}{\sqrt{n}} $
 ```
 
 
