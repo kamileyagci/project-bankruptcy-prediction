@@ -18,7 +18,7 @@ In this study, I will analyze the financial standings of the Polish companies to
 * data: directory containing the data files
 * figures: directory containing figures/images
 * notUsed: directory containing some prelimenary analysis, which is not part of the latest version of the project
-* saved_models: directory containing the saved models
+* saved_model_history: directory containing the saved models
 * .gitignore: text file that contains the list of files/directories that should not be tracked by git repository
 * README.md: markdown file that describes the git repository and the project
 * analysis_1_explore.ipynb: jupyter notebook for analysis part 1, data exploring
@@ -143,7 +143,7 @@ The table below shows the comparison of imbalance treatment approaches at max_de
 <img src="/figures/table_imbalance_depth4.png" width=600/>
 
 
-**Outcomes:**:
+**Findings:**
 * Applying sample_weight or sample_pos_weight improves the model performance:
     * increases recall
     * decreases overfitting
