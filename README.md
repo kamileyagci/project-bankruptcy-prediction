@@ -111,23 +111,7 @@ Imbalance Ratio = # of class 0 / # of class 1
 
 $$ Imbalance Ratio = \frac{# of class 0 companies}{# of class 1 companies} $$
 
-```
-# Imbalance info using class value_counts
-
-print('Imbalance Ratio, based on class value_counts:')
-
-df_list = [df1, df2, df3, df4, df5]
-
-for i, df in enumerate(df_list, start=1):
-    val_counts = df['class'].value_counts()
-    ratio= val_counts[0]/val_counts[1]
-    sqrt_ratio= np.sqrt(val_counts[0]/val_counts[1])
-    print(f'Data {i}: Ratio={round(ratio,3)}, sqrt(ratio)={round(sqrt_ratio,3)}')
-    
-# The values are very similar for train/test/whole datasets.
-
-```
-
+$$ x^2 = 5 $$
 
 | Data # | Imbalance Ratio | Sqrt of Imbalance Ratio |
 | :- | -: | :-: |
