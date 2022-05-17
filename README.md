@@ -132,11 +132,11 @@ There are two approaches to deal with the class imbalance.
 
 The graphs below show the effect of sample_weight on model performance at several max_depth values for Data 3. Left: No sample_weight applied. Right: sample_weight method applied.
 
-<img src="/figures/sample_weight.jpeg" width=1200/>
+<img src="/figures/scan_sample_weight.jpeg" width=1200/>
 
 The graphs below shows the performance of model as sample_pos_weight varies, at max_depth=4 for Data 3. Left: only scale_pos_weight applied. Right: both sample_weight + scale_pos_weight applied.
 
-<img src="/figures/scale_pos_weight.jpeg" width=1200/>
+<img src="/figures/scan_scale_pos_weight_depth4.jpeg" width=1200/>
 
 The table below shows the comparison of imbalance treatment approaches at max_depth=4 for Data 3:
 
@@ -225,7 +225,11 @@ I started with baseline model and did improve the performance step by step.
 
 * The graphs below show the scan results of the selected parameters:
 
+<img src="/figures/scan_nEstimators_depth5.png" width=1200/>
 
+<img src="/figures/scan_learningRate_depth5.png" width=1200/>
+
+<img src="/figures/scan_regularization_depth5.jpeg" width=1200/>
 
 
 * Optimum paratemters for max_depth=5:
