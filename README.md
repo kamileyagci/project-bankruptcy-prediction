@@ -134,7 +134,7 @@ There are two approaches to deal with the class imbalance. I have used both appr
 
 The below graphs show the effect of sample_weight on model performance:
 
-<img src="/figures/sample_weight.jpeg" width=1200/>
+<img src="/figures/sample_weight.jpeg" width=1500/>
 
 
 
