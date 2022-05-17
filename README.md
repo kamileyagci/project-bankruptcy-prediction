@@ -221,10 +221,11 @@ I started with baseline model and did improve the performance step by step.
     * decrease overfitting
     * increase 'recall' metric
 
-
 * I have scanned the parameters, which affects the overfitting, step by step in an order as listed at the beginning of 'Model Optimization for Data 3' section.
 
-* Only the the scan results of the selected parameters are shown below.
+* Model 7 has the optimum design at max_depth=5 for Data 3.
+
+The scan results of the selected parameters are shown below:
 
 * n_estimators: ROC curve and metrics
 
@@ -258,7 +259,7 @@ I started with baseline model and did improve the performance step by step.
 
 #### Model 9: Optimized Model at max_depth=4
 
-* Same approach is followed for max_depth=4.
+* Same optimization approach is followed for max_depth=4.
 
 * Optimum paratemters for max_depth=4:
     * scale_pos_weight = 4.5,
@@ -276,7 +277,7 @@ I started with baseline model and did improve the performance step by step.
 
 #### Model 10: Optimized Model at max_depth=6
 
-* Same approach is followed for max_depth=6.
+* Same optimizationapproach is followed for max_depth=6.
 
 * Optimum paratemters for max_depth=6:
     * scale_pos_weight = 20,
@@ -298,18 +299,46 @@ I started with baseline model and did improve the performance step by step.
     * Maximum recall
     * Minumum overfitting
 
-* The table below  and the ROC curve compares the performance of models for Data 3:
+The table below compares the performance of models for Data 3:
 
 <img src="/figures/table_data3_models.png" width=450/>
-
-<img src="/figures/ROC_modelCompare_Model_1237910_d3.png" width=650/>
-
 
 
 ### Model Performance on All Datasest
 
+I have applied the optimumum models on all five datasets.
+    * Model 7 at max_depth=5
+    * Model 9 at max_depth=4
+    * Model 10 at max_depth=6
+
+<img src="/figures/table_All_models.png" width=450/>
+
+* Metrics graphs:
+
+<img src="/figures/Metrics_CompareModels_AllData.png" width=450/>
+
+I also tried to tune the parameters to see if I can get a model performs equally good, better, on all data files. But no success.
 
 ### Final Model
+
+Model 7 is the best performing, when all datasets are considered.
+
+* Final Model parameters:
+    * scale_pos_weight = 20,
+    * n_estimators = 125, 
+    * max_depth = 5,
+    * min_child_weight = 3,
+    * gamma = 0,
+    * learning_rate = 0.20,
+    * max_delta_step = 0,
+    * reg_lambda = 0,
+    * reg_alpha = 5,
+    * subsample = 1,
+    * colsample_bytree = 0.7
+
+* ROC curve
+
+<img src="/figures/ROC_dataCompare_final_model.png" width=650/>
 
 
 ## Conclusion
