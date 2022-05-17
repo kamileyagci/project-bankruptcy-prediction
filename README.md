@@ -295,7 +295,7 @@ I started with baseline model and did improve the performance step by step.
 
 <img src="/figures/table_data3_models.png" width=450/>
 
-<img src="/figures/ROC_modelCompare_Model_1237910_d3.png" width=600/>
+<img src="/figures/ROC_modelCompare_Model_1237910_d3.png" width=650/>
 
 
 
