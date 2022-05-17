@@ -362,7 +362,7 @@ Model 7 is the best performing, when all datasets are considered.
 
 
 
-## Interpretation of Final Model Results
+## Interpretation of Results
 
 5-year Period (Data 1):
 * Model correctly identifies the 80.4 of the true bankrupt companies, which will bankrupt 5 years later. (recall)
