@@ -363,6 +363,8 @@ Model 7 is the best performing, when all datasets are considered.
 
 #### Class 0 predictions for Final Model:
 
+The table shows the prediction metrics of the final model for the still still operating companies (class 0).
+
 | Data # | precision | recall | f1 |
 | :- | -: | :-: | :-: |
 | Data 1 | 0.99 | 0.98 | 0.99
