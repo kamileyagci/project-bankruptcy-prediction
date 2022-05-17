@@ -287,12 +287,15 @@ I started with baseline model and did improve the performance step by step.
     * colsample_bytree = 1
 
 
-
 #### Best Model for Data 3
+
+* The table below  and the ROC curve compares the performance of models for Data 3:
 
 <img src="/figures/table_data3_models.png" width=450/>
 
+<img src="/figures/ROC_modelCompare_Model_1237910_d3.png" width=450/>
 
+* The best model for Data 3 is Model 7.
 
 
 
