@@ -221,6 +221,7 @@ I started with baseline model and did improve the performance step by step.
     * decrease overfitting
     * increase 'recall' metric
 
+
 * I have scanned the parameters, which affects the overfitting, step by step in an order as listed at the beginning of 'Model Optimization for Data 3' section.
 
 * Only the the scan results of the selected parameters are shown below.
@@ -228,6 +229,10 @@ I started with baseline model and did improve the performance step by step.
 * n_estimators: ROC curve and metrics
 
 <img src="/figures/scan_nEstimators_depth5.png" width=1200/>
+
+* max_depth: Log loss and metrics 
+
+<img src="/figures/scan_maxDepth.png" width=1200/>
 
 * learning_rate: Log loss and metrics 
 
