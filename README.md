@@ -99,9 +99,9 @@ I will focus on the performance of 'recall' metric in order to minimize false ne
 
 ## Analysis and Results
 
+Initially, I explored the XGBoost Classifier models on Data 3. After determing the best model designs, I applied them on other datasets and compare the results.
 
-
-No cleaning applied to data. XGBoost Classifier can handle the missing values.
+Note: No cleaning applied to data. XGBoost Classifier can handle the missing values and outliers.
 
 ### Class Imbalance
 
@@ -117,6 +117,18 @@ Imbalance Ratio = (# of class 0 companies) / (# of class 1 companies)
 | Data 4 | 18.01 | 4.24 
 | Data 5 | 13.41 | 3.66 
 
+There are two approaches to deal with the class imbalance:
+* 'sample_weight' parameter when training the data
+* 'scale_pos_weight' parameter when initiating the classifier 
+
+I have used both approaches together to deal with the class imbalance.
+
+* sample_weight: The weights for training sample are calculated for each dataset seperately and used when during training.
+
+* scale_pos_weight: I provide certain values to initiate the classifier. I either use the imbalance ratio or square root of the imbalance ratio. These values are not exactly same for the datasets, but close enough to use a constant about average number.
+    * max_depth=4: scale_pos_weight=4.5 (~square root of imbalance ratio)
+    * max_depth=5: scale_pos_weight=20 (~imbalance ratio)
+    * max_depth=6: scale_pos_weight=20 (~imbalance ratio)
 
 
 ## Conclusion
