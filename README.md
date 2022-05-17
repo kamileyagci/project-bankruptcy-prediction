@@ -108,6 +108,8 @@ Note: No cleaning applied to data. XGBoost Classifier can handle the missing val
 
 ### Class Imbalance
 
+Data 3 is used for Class Imbalance Study.
+
 The class imbalance is one of the main issues in this data.
 
 Imbalance Ratio = (# of class 0 companies) / (# of class 1 companies)
@@ -124,36 +126,33 @@ There are two approaches to deal with the class imbalance.
 
 1. **sample_weight:** class weight parameter when training the data. The class weights are calculated for each dataset seperately during training.
 
-The below graph show the effect of sample_weight on model performance for several max_depth values:
-
-<img src="/figures/sample_weight.jpeg" width=1200/>
-
-* Applying sample_weight improves the model performance. 
-* Overfitting continues.
-* sample_weight is more effective at lower max_depth (3 or 4)
-
-
-2. scale_pos_weight: class weight parameter when initiating the classifier 
-    * I provide certain constant values to initiate the classifier. 
+2. **scale_pos_weight:** class weight parameter when initiating the classifier. I provide certain constant values to initiate the classifier. 
 
 I have used both approaches together, since it provided a better result.
 
+The graphs below show the effect of sample_weight on model performance for several max_depth values for Data 3. Left: No sample_weight applied. Right: sample_weight method applied.
 
-I either use the imbalance ratio or square root of the imbalance ratio. These values are not exactly same for the datasets, but close enough.
+<img src="/figures/sample_weight.jpeg" width=1200/>
 
-Optimum values:
-* max_depth=4: sample_weight + scale_pos_weight=4.5 (~square root of imbalance ratio)
-* max_depth=5: sample_weight + scale_pos_weight=20 (~imbalance ratio)
-* max_depth=6: sample_weight + scale_pos_weight=20 (~imbalance ratio)
+The graphs below shows the performance of model as sample_pos_weight varies. Left: only scale_pos_weight applied. Right: both sample_weight + scale_pos_weight applied.
+
+
+
+* Applying sample_weight or sample_pos_weight improves the model performance.
+* sample_weight is more effective at lower max_depth (3 or 4)
+* Optimum configurations:
+    * max_depth=4: sample_weight + scale_pos_weight=4.5 (~square root of imbalance ratio)
+    * max_depth=5: sample_weight + scale_pos_weight=20 (~imbalance ratio)
+    * max_depth=6: sample_weight + scale_pos_weight=20 (~imbalance ratio)
 
 
 
 ## Conclusion
 
 5-year Period (Data 1):
-    * Model successfully identifies the 80.4 of the true bankrupt companies, which will bankrupt 5 years later. (recall)
-    * Among the model predicted bankruptcy companies, 64.1% of them are true bankrupt companies, which will bankrupt 5 years later. (precision)
-    * The Harmonic Mean of Precision and Recall (f1-score) is 71.3%.
+* Model successfully identifies the 80.4 of the true bankrupt companies, which will bankrupt 5 years later. (recall)
+* Among the model predicted bankruptcy companies, 64.1% of them are true bankrupt companies, which will bankrupt 5 years later. (precision)
+* The Harmonic Mean of Precision and Recall (f1-score) is 71.3%.
     
 4-year Period (Data 2):
     * Model successfully identifies the 62.0 of the true bankrupt companies, which will bankrupt 4 years later. (recall)
