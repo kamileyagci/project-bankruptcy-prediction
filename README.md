@@ -110,6 +110,8 @@ Note: No cleaning applied to data. XGBoost Classifier can handle the missing val
 
 Data 3 is used for Class Imbalance Study.
 
+The default XGBClassifier init parameters are used (except max_depth and scale_pos_weight).
+
 The class imbalance is one of the main issues in this data.
 
 Imbalance Ratio = (# of class 0 companies) / (# of class 1 companies)
@@ -136,13 +138,15 @@ The graphs below shows the performance of model as sample_pos_weight varies, at 
 
 <img src="/figures/scale_pos_weight.jpeg" width=1200/>
 
-The comparison of imbalance treatment approached at max_depth=4 for Data 3:
+The table below shows the comparison of imbalance treatment approaches at max_depth=4 for Data 3:
 
 <img src="/figures/table_imbalance_depth4.png" width=600/>
 
+
+**Outcomes:**:
 * Applying sample_weight or sample_pos_weight improves the model performance:
     * increases recall
-    * decreased overfitting
+    * decreases overfitting
 * sample_weight is more effective at lower max_depth (3 or 4)
 * Using both approaches together provides a better result.
 * Optimum configurations:
@@ -151,7 +155,7 @@ The comparison of imbalance treatment approached at max_depth=4 for Data 3:
     * max_depth=6: sample_weight + scale_pos_weight=20 (~imbalance ratio)
 
 
-## Model Optimization for Data 3
+### Model Optimization for Data 3
 
 
 
