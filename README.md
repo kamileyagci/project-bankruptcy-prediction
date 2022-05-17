@@ -364,7 +364,7 @@ Model 7 is the best performing, when all datasets are considered.
 #### Class 0 predictions for Final Model:
 
 | Data # | precision | recall | f1 |
-| :- | -: | :-: |
+| :- | -: | :-: | :-: |
 | Data 1 | 0.99 | 0.98 | 0.99
 | Data 2 | 0.99 | 0.98 | 0.98
 | Data 3 | 0.98 | 0.97 | 0.98
