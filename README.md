@@ -99,11 +99,18 @@ I will focus on the performance of 'recall' metric in order to minimize false ne
 
 ## Analysis and Results
 
+
+
+No cleaning applied to data. XGBoost Classifier can handle the missing values.
+
 ### Class Imbalance
 
 The class imbalance is one of the main issues in this data.
 
 Imbalance Ratio = # of class 0 / # of class 1
+
+
+![formula](https://render.githubusercontent.com/render/math?math = Imbalance Ratio = \frac{# of class 0 companies}{# of class 1 companies})
 
 $$ Imbalance Ratio = \frac{# of class 0 companies}{# of class 1 companies} $$
 
