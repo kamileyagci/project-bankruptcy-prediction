@@ -120,23 +120,31 @@ Imbalance Ratio = (# of class 0 companies) / (# of class 1 companies)
 | Data 4 | 18.01 | 4.24 
 | Data 5 | 13.41 | 3.66 
 
-There are two approaches to deal with the class imbalance. I have used both approaches together, since it provided a better result.
+There are two approaches to deal with the class imbalance. 
 
-1. sample_weight: class weight parameter when training the data
-    * The class weights for training sample are calculated for each dataset seperately and used when during training.
+1. **sample_weight:** class weight parameter when training the data. The class weights are calculated for each dataset seperately during training.
+
+The below graph show the effect of sample_weight on model performance for several max_depth values:
+
+<img src="/figures/sample_weight.jpeg" width=1200/>
+
+* Applying sample_weight improves the model performance. 
+* Overfitting continues.
+* sample_weight is more effective at lower max_depth (3 or 4)
+
 
 2. scale_pos_weight: class weight parameter when initiating the classifier 
-    * I provide certain constant values to initiate the classifier. I either use the imbalance ratio or square root of the imbalance ratio. These values are not exactly same for the datasets, but close enough.
-    * Optimum values:
-        * max_depth=4: scale_pos_weight=4.5 (~square root of imbalance ratio)
-        * max_depth=5: scale_pos_weight=20 (~imbalance ratio)
-        * max_depth=6: scale_pos_weight=20 (~imbalance ratio)
+    * I provide certain constant values to initiate the classifier. 
 
-The below graphs show the effect of sample_weight on model performance:
-
-<img src="/figures/sample_weight.jpeg" width=1500/>
+I have used both approaches together, since it provided a better result.
 
 
+I either use the imbalance ratio or square root of the imbalance ratio. These values are not exactly same for the datasets, but close enough.
+
+Optimum values:
+* max_depth=4: sample_weight + scale_pos_weight=4.5 (~square root of imbalance ratio)
+* max_depth=5: sample_weight + scale_pos_weight=20 (~imbalance ratio)
+* max_depth=6: sample_weight + scale_pos_weight=20 (~imbalance ratio)
 
 
 
