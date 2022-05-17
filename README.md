@@ -111,7 +111,11 @@ Imbalance Ratio = # of class 0 / # of class 1
 
 $$ Imbalance Ratio = \frac{# of class 0 companies}{# of class 1 companies} $$
 
-<img src="https://render.githubusercontent.com/render/math?math = e^{i \pi} = -1">
+
+- <img src="https://latex.codecogs.com/gif.latex?O_t=\text { Onset event at time bin } t " /> 
+- <img src="https://latex.codecogs.com/gif.latex?s=\text { sensor reading }  " /> 
+- <img src="https://latex.codecogs.com/gif.latex?P(s | O_t )=\text { Probability of a sensor reading value when sleep onset is observed at a time bin } t " />
+
 
 | Data # | Imbalance Ratio | Sqrt of Imbalance Ratio |
 | :- | -: | :-: |
