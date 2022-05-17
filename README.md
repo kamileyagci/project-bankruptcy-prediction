@@ -140,7 +140,7 @@ The graphs below shows the performance of model as sample_pos_weight varies, at 
 
 The table below shows the comparison of imbalance treatment approaches at max_depth=4 for Data 3:
 
-<img src="/figures/table_imbalance_depth4.png" width=600/>
+<img src="/figures/table_imbalance_depth4.png" width=700/>
 
 
 **Findings:**
@@ -157,7 +157,82 @@ The table below shows the comparison of imbalance treatment approaches at max_de
 
 ### Model Optimization for Data 3
 
+I performed a detailed analysis on Data 3.
 
+The ovefitting looked a like a main issue for this study. I tried to control overfitting by tuning the XGBoost Classifier Parameters, while trying to improve the model at the same time.
+
+I firstly used GridSearchCV on few parameters to obtain best performance parameters. Then, I looked in parameters that effect overfitting.
+
+The paramaters that can affect overfitting are grouped in four categories:
+
+1. Boosting Rounds
+    * n_estimators
+2. Pruning:
+    * max_depth
+    * min_child_weight
+    * gamma   
+3. Regularization:
+    * learning_rate
+    * max_delta_step
+    * reg_lambda
+    * reg_alpha     
+4. Sampling
+    * subsample
+    * colsample_bytree
+
+I started with baseline model and did improve the performance step by step.
+
+#### Model 1: Baseline Model
+
+* Parameters: Default XGBClassifier parameters
+* max_depth = 6
+
+#### Model 2: Model with Class Imbalance treated
+
+* Optimized class balancing method used
+* max_depth=6: sample_weight + scale_pos_weight=20 (~imbalance ratio)
+
+#### Model 3: Model after GridSearchCV Parameter Tuning
+
+* I have applied GridSearcCV on the parameters: n_estimators, max_depth, min_child_weight, learning_rate, subsample
+
+* Scoring = 'f1'. Even though, my focus is on 'recall', I use 'f1; in GridSearchCV to obtain overall good performance.
+
+* I only used sample_weight method for parameter tuning. I chose not to use 'scale_pos_weight' during grid search, since the optimum value varies depending on the max_depth. After parameter tuning, I applied the optimum scale_pos_weight on data training.
+
+* The best parameters:
+    * n_estimators = 150 
+    * max_depth = 5
+    * min_child_weight = 1
+    * learning_rate = 0.20
+    * subsample = 1
+
+
+#### Model 7: Optimized Model at max_depth=5
+
+
+
+#### Model 9: Optimized Model at max_depth=4
+
+
+
+#### Model 10: Optimized Model at max_depth=6
+
+
+
+
+#### Best Model for Data 3
+
+<img src="/figures/table_data3_models.png" width=500/>
+
+
+
+
+
+### Model Performance on All Datasest
+
+
+### Final Model
 
 
 ## Conclusion
