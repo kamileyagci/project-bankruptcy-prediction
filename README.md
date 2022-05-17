@@ -313,7 +313,7 @@ I have applied the optimumum models on all five datasets.
 
 Metrics graphs for comparison:
 
-<img src="/figures/Metrics_CompareModels_AllData.png" width=1200/>
+<img src="/figures/Metrics_CompareModels_AllData2.png" width=1200/>
 
 I also tried to tune the parameters to see if I can get a model performs equally good, better, on all data files. But no success.
 
