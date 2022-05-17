@@ -110,7 +110,7 @@ The class imbalance is one of the main issues in this data.
 Imbalance Ratio = # of class 0 / # of class 1
 
 
-![formula](https://render.githubusercontent.com/render/math?math = Imbalance Ratio = \frac{# of class 0 companies}{# of class 1 companies})
+$$x^2 + 5 = x^3$$
 
 $$ Imbalance Ratio = \frac{# of class 0 companies}{# of class 1 companies} $$
 
