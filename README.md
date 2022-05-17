@@ -97,7 +97,7 @@ This is a binary classification problem, since my goal is to identify whether th
 
 Evaluation metric for data training = 'logloss'
 
-I will focus on the performance of 'recall' metric in order to minimize false negatives. Besides, I will also keep an eye on 'f1', and 'AUC' metrics.
+I will focus on the performance of 'recall' metric in order to minimize false negatives. Besides, I will also keep an eye on 'precision', 'f1', 'accuracy, and 'AUC' metrics.
 
 
 ## Analysis and Results
@@ -220,6 +220,7 @@ I started with baseline model and did improve the performance step by step.
 * From Model 4 to Model 7, I have tried to tune the parameters, at max_depth=5, in order to 
     * decrease overfitting
     * increase 'recall' metric
+    * avoid large decrease in 'precision' as much as possible
 
 * I have scanned the parameters, which affects the overfitting, step by step in an order as listed at the beginning of 'Model Optimization for Data 3' section.
 
@@ -297,6 +298,7 @@ The scan results of the selected parameters are shown below:
 
 * Model 9, optimized at max_depth=4, is the best model for Data 3.
     * Maximum recall
+    * Moderate precision
     * Minumum overfitting
 
 The table below compares the performance of models for Data 3:
@@ -307,15 +309,30 @@ The table below compares the performance of models for Data 3:
 ### Model Performance on All Datasest
 
 I have applied the optimumum models on all five datasets.
+
 * Model 7 at max_depth=5
 * Model 9 at max_depth=4
 * Model 10 at max_depth=6
+
+Note: I also tried to tune the parameters to see if I can get a model performs equally good, better, on all data files. But no success.
 
 Metrics graphs for comparison:
 
 <img src="/figures/Metrics_CompareModels_AllData2.png" width=1200/>
 
-I also tried to tune the parameters to see if I can get a model performs equally good, better, on all data files. But no success.
+Model 9 (max_depth=4):
+    * Previously Selected performance for data 3
+    * Overfitting is least on Data 3
+
+Model 7 (max_depth=5):
+    * Performance is similar to Model 9
+    * More smooth performance on all datasets
+
+Model 10 (max_depth=6):
+    * Highest metrics
+    * But overfitting is sligtly larger
+    
+Selected model: Model 7
 
 
 ### Final Model
@@ -345,34 +362,34 @@ Model 7 is the best performing, when all datasets are considered.
 
 
 
-## Conclusion
+## Interpretation of Final Model Results
 
 5-year Period (Data 1):
-* Model successfully identifies the 80.4 of the true bankrupt companies, which will bankrupt 5 years later. (recall)
+* Model correctly identifies the 80.4 of the true bankrupt companies, which will bankrupt 5 years later. (recall)
 * Among the model predicted bankruptcy companies, 64.1% of them are true bankrupt companies, which will bankrupt 5 years later. (precision)
 * The Harmonic Mean of Precision and Recall (f1-score) is 71.3%.
     
 4-year Period (Data 2):
-* Model successfully identifies the 62.0 of the true bankrupt companies, which will bankrupt 4 years later. (recall)
+* Model correctly identifies the 62.0 of the true bankrupt companies, which will bankrupt 4 years later. (recall)
 * Among the model predicted bankruptcy companies, 50.6% of them are true bankrupt companies, which will bankrupt 4 years later. (precision)
 * The Harmonic Mean of Precision and Recall (f1-score) is 55.7%.
     
 3-year Period (Data 3):
-* Model successfully identifies the 72.0 of the true bankrupt companies, which will bankrupt 3 years later. (recall)
+* Model correctly identifies the 72.0 of the true bankrupt companies, which will bankrupt 3 years later. (recall)
 * Among the model predicted bankruptcy companies, 53.5% of them are true bankrupt companies, which will bankrupt 3 years later. * The Harmonic Mean of Precision and Recall (f1-score) is 61.4%.
 
 2-year Period (Data 4):
-* Model successfully identifies the 68.0 of the true bankrupt companies, which will bankrupt 2 years later. (recall)
+* Model correctly identifies the 68.0 of the true bankrupt companies, which will bankrupt 2 years later. (recall)
 * Among the model predicted bankruptcy companies, 55.6% of them are true bankrupt companies, which will bankrupt 2 years later. (precision)
 * The Harmonic Mean of Precision and Recall (f1-score) is 61.1%.
     
 1-year Period (Data 5):
-* Model successfully identifies the 78.9 of the true bankrupt companies, which will bankrupt 1 years later. (recall)
+* Model correctly identifies the 78.9 of the true bankrupt companies, which will bankrupt 1 years later. (recall)
 * Among the model predicted bankruptcy companies, 60.7% of them are true bankrupt companies, which will bankrupt 1 years later. (precision)
 * The Harmonic Mean of Precision and Recall (f1-score) is 68.6%.
 
 On Average:
-* Model successfully identifies the 72.3 of the true bankrupt companies. (recall)
+* Model correctly identifies the 72.3 of the true bankrupt companies. (recall)
 * Among the model predicted bankruptcy companies, 56.9% of them are true bankrupt companies. (precision)
 * The Harmonic Mean of Precision and Recall (f1-score) is 63.6%.
     
@@ -383,12 +400,30 @@ On Average:
 * X5 [(cash + short-term securities + receivables - short-term liabilities) / (operating expenses - depreciation)] * 365
  
 
+## Conclusion
+
+I had three main challenges in this project:
+
+1. **Class Imbalance:** 
+    * Resolved. 
+    * Balancing the sample increased the recall and so decreased the precision. The balance sample has moderate evaluation scores. See Model 2 for Data 3. 
+    * However overfitting didn't improve much.
+
+2. **Low recall score:**
+    * I managed to improve recall significantly for all datasets. For instance, Data 3 recall score improved from 0.467 to 0.720.
+    * I couldn't go for higher recall value, because the precision was decreasing dramatically (below 0.5). The recall and precision are inversely proportional.
+
+3. **Large overfitting:** 
+    * I did decrease the overfitting, but not on desired level. 
+    * I tuned parameters which are effecive on overfitting, and find the optimum designs that produces low overfitting, large recall and moderate precision. 
+    * However, I couldn't enforce larger reduction in overfitting, since it causes the precision go below 0.5. which is the random guess probability.
+
 
 ## Future Work
 
-* The model performance is not very good and overfitting is large. Search for alternative methods to improve performance.
+* Create seperate final models for each dataset; not just one final model that applies on all. 
 
-* Each dataset can be optimized (with parameter tuning) seperately and create 5 different models, instead of one model. This will increase the overall performance.
+* Search for alternative Classifier methods/tools.
 
-* Created functions are long and repeating. Update them.
+* Simply/shorten functions that are created during the project. They have repeating codes.
 
