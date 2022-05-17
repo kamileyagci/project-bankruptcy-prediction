@@ -128,22 +128,31 @@ There are two approaches to deal with the class imbalance.
 
 2. **scale_pos_weight:** class weight parameter when initiating the classifier. I provide certain constant values to initiate the classifier. 
 
-I have used both approaches together, since it provided a better result.
-
-The graphs below show the effect of sample_weight on model performance for several max_depth values for Data 3. Left: No sample_weight applied. Right: sample_weight method applied.
+The graphs below show the effect of sample_weight on model performance at several max_depth values for Data 3. Left: No sample_weight applied. Right: sample_weight method applied.
 
 <img src="/figures/sample_weight.jpeg" width=1200/>
 
-The graphs below shows the performance of model as sample_pos_weight varies. Left: only scale_pos_weight applied. Right: both sample_weight + scale_pos_weight applied.
+The graphs below shows the performance of model as sample_pos_weight varies, at max_depth=4 for Data 3. Left: only scale_pos_weight applied. Right: both sample_weight + scale_pos_weight applied.
 
+<img src="/figures/sample_pos_weight.jpeg" width=1200/>
 
+The comparison of imbalance treatment approached at max_depth=4 for Data 3:
 
-* Applying sample_weight or sample_pos_weight improves the model performance.
+<img src="/figures/table_imbalance_depth4.png" width=600/>
+
+* Applying sample_weight or sample_pos_weight improves the model performance:
+    * increases recall
+    * decreased overfitting
 * sample_weight is more effective at lower max_depth (3 or 4)
+* Using both approaches together provides a better result.
 * Optimum configurations:
     * max_depth=4: sample_weight + scale_pos_weight=4.5 (~square root of imbalance ratio)
     * max_depth=5: sample_weight + scale_pos_weight=20 (~imbalance ratio)
     * max_depth=6: sample_weight + scale_pos_weight=20 (~imbalance ratio)
+
+
+## Model Optimization for Data 3
+
 
 
 
