@@ -107,11 +107,7 @@ No cleaning applied to data. XGBoost Classifier can handle the missing values.
 
 The class imbalance is one of the main issues in this data.
 
-Imbalance Ratio = # of class 0 / # of class 1
-
-$$ Imbalance Ratio = \frac{# of class 0 companies}{# of class 1 companies} $$
-
-$$ x^2 = 5 $$
+Imbalance Ratio = (# of class 0 companies) / (# of class 1 companies)
 
 | Data # | Imbalance Ratio | Sqrt of Imbalance Ratio |
 | :- | -: | :-: |
