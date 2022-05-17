@@ -194,7 +194,7 @@ I started with baseline model and did improve the performance step by step.
 * Model performance increased compared to Model 1. 
 * See the ROC curve graph below and summary metrics table at the end of 'Model Optimization' section.
 
-<img src="/figures/ROC_modelCompare_Model_1-2_d3.png" width=400/>
+<img src="/figures/ROC_modelCompare_Model_1-2_d3.png" width=600/>
 
 #### Model 3: Model after GridSearchCV Parameter Tuning
 
