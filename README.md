@@ -119,11 +119,11 @@ Imbalance Ratio = (# of class 0 companies) / (# of class 1 companies)
 
 There are two approaches to deal with the class imbalance. I have used both approaches together, since it provided a better result.
 
-* sample_weight: parameter when training the data.
+1. sample_weight: parameter when training the data.
     * The weights for training sample are calculated for each dataset seperately and used when during training.
 
-* scale_pos_weight: parameter when initiating the classifier 
-    * I provide certain values to initiate the classifier. I either use the imbalance ratio or square root of the imbalance ratio. These values are not exactly same for the datasets, but close enough to use a constant about average number.
+2. scale_pos_weight: parameter when initiating the classifier 
+    * I provide certain constant values to initiate the classifier. I either use the imbalance ratio or square root of the imbalance ratio. These values are not exactly same for the datasets, but close enough.
     * Optimized values:
         * max_depth=4: scale_pos_weight=4.5 (~square root of imbalance ratio)
         * max_depth=5: scale_pos_weight=20 (~imbalance ratio)
