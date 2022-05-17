@@ -16,6 +16,7 @@ In this study, I will analyze the financial standings of the Polish companies to
 ## Repository Content
 
 * data: directory containing the data files
+* deliverables: directory containing the files to be submitted for project review
 * figures: directory containing figures/images
 * notUsed: directory containing some prelimenary analysis, which is not part of the latest version of the project
 * saved_model_history: directory containing the saved models
