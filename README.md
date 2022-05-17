@@ -34,13 +34,11 @@ In this study, I will analyze the financial standings of the Polish companies to
 * Data
 * Methods
 * Analysis and Results
-    * Class Imbalance Study for Dataset 3
-        * ???
-    * XGBoost Classification on Dataset 3
-        * ???
-    * XGBoost Classification on all five datasets
-        * ??
-        * Final Model
+    * Class Imbalance
+    * Model Optimization for Data 3
+    * Model Performance on All Datasest
+    * Final Model
+* Interpretation of Results
 * Conclusion
 * Future Work
 
