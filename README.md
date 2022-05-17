@@ -361,38 +361,53 @@ Model 7 is the best performing, when all datasets are considered.
 <img src="/figures/ROC_dataCompare_final_model.png" width=600/>
 
 
+#### Class 0 predictions for Final Model:
+
+| Data # | precision | recall | f1 |
+| :- | -: | :-: |
+| Data 1 | 0.99 | 0.98 | 0.99
+| Data 2 | 0.99 | 0.98 | 0.98
+| Data 3 | 0.98 | 0.97 | 0.98
+| Data 4 | 0.98 | 0.97 | 0.98 
+| Data 5 | 0.98 | 0.96 | 0.97
+
 
 ## Interpretation of Results
 
 5-year Period (Data 1):
-* Model correctly identifies the 80.4 of the true bankrupt companies, which will bankrupt 5 years later. (recall)
+* Model correctly identifies the 80.4% of the true bankrupt companies, which will bankrupt 5 years later. (recall)
 * Among the model predicted bankruptcy companies, 64.1% of them are true bankrupt companies, which will bankrupt 5 years later. (precision)
 * The Harmonic Mean of Precision and Recall (f1-score) is 71.3%.
     
 4-year Period (Data 2):
-* Model correctly identifies the 62.0 of the true bankrupt companies, which will bankrupt 4 years later. (recall)
+* Model correctly identifies the 62.0% of the true bankrupt companies, which will bankrupt 4 years later. (recall)
 * Among the model predicted bankruptcy companies, 50.6% of them are true bankrupt companies, which will bankrupt 4 years later. (precision)
 * The Harmonic Mean of Precision and Recall (f1-score) is 55.7%.
     
 3-year Period (Data 3):
-* Model correctly identifies the 72.0 of the true bankrupt companies, which will bankrupt 3 years later. (recall)
+* Model correctly identifies the 72.0% of the true bankrupt companies, which will bankrupt 3 years later. (recall)
 * Among the model predicted bankruptcy companies, 53.5% of them are true bankrupt companies, which will bankrupt 3 years later. * The Harmonic Mean of Precision and Recall (f1-score) is 61.4%.
 
 2-year Period (Data 4):
-* Model correctly identifies the 68.0 of the true bankrupt companies, which will bankrupt 2 years later. (recall)
+* Model correctly identifies the 68.0% of the true bankrupt companies, which will bankrupt 2 years later. (recall)
 * Among the model predicted bankruptcy companies, 55.6% of them are true bankrupt companies, which will bankrupt 2 years later. (precision)
 * The Harmonic Mean of Precision and Recall (f1-score) is 61.1%.
     
 1-year Period (Data 5):
-* Model correctly identifies the 78.9 of the true bankrupt companies, which will bankrupt 1 years later. (recall)
+* Model correctly identifies the 78.9% of the true bankrupt companies, which will bankrupt 1 years later. (recall)
 * Among the model predicted bankruptcy companies, 60.7% of them are true bankrupt companies, which will bankrupt 1 years later. (precision)
 * The Harmonic Mean of Precision and Recall (f1-score) is 68.6%.
 
 On Average:
-* Model correctly identifies the 72.3 of the true bankrupt companies. (recall)
+* Model correctly identifies the 72.3% of the true bankrupt companies. (recall)
 * Among the model predicted bankruptcy companies, 56.9% of them are true bankrupt companies. (precision)
 * The Harmonic Mean of Precision and Recall (f1-score) is 63.6%.
     
+Class 0 predictions:
+* Model correctly identifies the ~97% of the true still operating companies. (recall, class 0)
+* Among the model predicted still operating companies, ~98% of them are true still operating companies. (precision, class 0)
+* The Harmonic Mean of Precision and Recall (f1-score, class 0) is ~98%.
+
 **Best common predictors**
 
 * X27 profit on operating activities / financial expenses
@@ -418,6 +433,9 @@ I had three main challenges in this project:
     * I tuned parameters which are effecive on overfitting, and find the optimum designs that produces low overfitting, large recall and moderate precision. 
     * However, I couldn't enforce larger reduction in overfitting, since it causes the precision go below 0.5. which is the random guess probability.
 
+Overall, my model correctly identifies
+    * 72.3 of the true bankrupt companies
+    * 97% of the true still operating companies
 
 ## Future Work
 
