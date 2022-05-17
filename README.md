@@ -221,7 +221,7 @@ I started with baseline model and did improve the performance step by step.
     * decrease overfitting
     * increase 'recall' metric
 
-* I have scanned the parameters which affects the overfitting, step by step. These parameters are listed at the beginning of 'Model Optimization for Data 3' section.
+* I have scanned the parameters, which affects the overfitting, step by step in an order as listed at the beginning of 'Model Optimization for Data 3' section.
 
 * The graphs below show the scan results of the selected parameters:
 
@@ -229,25 +229,51 @@ I started with baseline model and did improve the performance step by step.
 
 
 * Optimum paratemters for max_depth=5:
-    'scale_pos_weight': 20,
-    'n_estimators': 125, 
-    'max_depth': 5,
-    'min_child_weight': 3,
-    'gamma': 0,
-    'learning_rate': 0.20,
-    'max_delta_step': 0,
-    'reg_lambda': 0,
-    'reg_alpha': 5,
-    'subsample': 1,
-    'colsample_bytree': 0.7
+    * scale_pos_weight = 20,
+    * n_estimators = 125, 
+    * max_depth = 5,
+    * min_child_weight = 3,
+    * gamma = 0,
+    * learning_rate = 0.20,
+    * max_delta_step = 0,
+    * reg_lambda = 0,
+    * reg_alpha = 5,
+    * subsample = 1,
+    * colsample_bytree = 0.7
 
 
 #### Model 9: Optimized Model at max_depth=4
 
 
+* Optimum paratemters for max_depth=4:
+    * scale_pos_weight = 4.5,
+    * n_estimators = 125, 
+    * max_depth = 4,
+    * min_child_weight = 3,
+    * gamma = 0,
+    * learning_rate = 0.20,
+    * max_delta_step = 0,
+    * reg_lambda = 1,
+    * reg_alpha = 0,
+    * subsample = 1,
+    * colsample_bytree = 1
+   
 
 #### Model 10: Optimized Model at max_depth=6
 
+
+* Optimum paratemters for max_depth=6:
+    * scale_pos_weight = 20,
+    * n_estimators = 80, 
+    * max_depth = 6,
+    * min_child_weight = 3,
+    * gamma = 0,
+    * learning_rate = 0.25,
+    * max_delta_step = 4,
+    * reg_lambda = 1,
+    * reg_alpha = 0,
+    * subsample = 1,
+    * colsample_bytree = 1
 
 
 
