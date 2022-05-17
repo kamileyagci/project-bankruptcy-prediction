@@ -155,29 +155,28 @@ The graphs below shows the performance of model as sample_pos_weight varies. Lef
 * The Harmonic Mean of Precision and Recall (f1-score) is 71.3%.
     
 4-year Period (Data 2):
-    * Model successfully identifies the 62.0 of the true bankrupt companies, which will bankrupt 4 years later. (recall)
-    * Among the model predicted bankruptcy companies, 50.6% of them are true bankrupt companies, which will bankrupt 4 years later. (precision)
-    * The Harmonic Mean of Precision and Recall (f1-score) is 55.7%.
+* Model successfully identifies the 62.0 of the true bankrupt companies, which will bankrupt 4 years later. (recall)
+* Among the model predicted bankruptcy companies, 50.6% of them are true bankrupt companies, which will bankrupt 4 years later. (precision)
+* The Harmonic Mean of Precision and Recall (f1-score) is 55.7%.
     
 3-year Period (Data 3):
-    * Model successfully identifies the 72.0 of the true bankrupt companies, which will bankrupt 3 years later. (recall)
-    * Among the model predicted bankruptcy companies, 53.5% of them are true bankrupt companies, which will bankrupt 3 years later. (precision)
-    * The Harmonic Mean of Precision and Recall (f1-score) is 61.4%.
+* Model successfully identifies the 72.0 of the true bankrupt companies, which will bankrupt 3 years later. (recall)
+* Among the model predicted bankruptcy companies, 53.5% of them are true bankrupt companies, which will bankrupt 3 years later. * The Harmonic Mean of Precision and Recall (f1-score) is 61.4%.
 
 2-year Period (Data 4):
-    * Model successfully identifies the 68.0 of the true bankrupt companies, which will bankrupt 2 years later. (recall)
-    * Among the model predicted bankruptcy companies, 55.6% of them are true bankrupt companies, which will bankrupt 2 years later. (precision)
-    * The Harmonic Mean of Precision and Recall (f1-score) is 61.1%.
+* Model successfully identifies the 68.0 of the true bankrupt companies, which will bankrupt 2 years later. (recall)
+* Among the model predicted bankruptcy companies, 55.6% of them are true bankrupt companies, which will bankrupt 2 years later. (precision)
+* The Harmonic Mean of Precision and Recall (f1-score) is 61.1%.
     
 1-year Period (Data 5):
-    * Model successfully identifies the 78.9 of the true bankrupt companies, which will bankrupt 1 years later. (recall)
-    * Among the model predicted bankruptcy companies, 60.7% of them are true bankrupt companies, which will bankrupt 1 years later. (precision)
-    * The Harmonic Mean of Precision and Recall (f1-score) is 68.6%.
+* Model successfully identifies the 78.9 of the true bankrupt companies, which will bankrupt 1 years later. (recall)
+* Among the model predicted bankruptcy companies, 60.7% of them are true bankrupt companies, which will bankrupt 1 years later. (precision)
+* The Harmonic Mean of Precision and Recall (f1-score) is 68.6%.
 
 On Average:
-    * Model successfully identifies the 72.3 of the true bankrupt companies. (recall)
-    * Among the model predicted bankruptcy companies, 56.9% of them are true bankrupt companies. (precision)
-    * The Harmonic Mean of Precision and Recall (f1-score) is 63.6%.
+* Model successfully identifies the 72.3 of the true bankrupt companies. (recall)
+* Among the model predicted bankruptcy companies, 56.9% of them are true bankrupt companies. (precision)
+* The Harmonic Mean of Precision and Recall (f1-score) is 63.6%.
     
 **Best common predictors**
 
