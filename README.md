@@ -89,8 +89,8 @@ The number of companies in each dataset and class distributions:
 
 
 #### Data Cleaning
-* No cleaning applied to data used in the analysis. XGBoost Classifier can handle the missing values and outliers.
-* Prelimenary study shows that, model performance with cleaned data is very significantly lower.
+* No cleaning applied to data used in this analysis. XGBoost Classifier can handle the missing values and outliers.
+* Prelimenary study showed that, model performance with cleaned data is significantly lower.
 
 ## Method
 
