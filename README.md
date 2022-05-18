@@ -466,7 +466,7 @@ I had three main challenges in this project:
 
 * Create seperate final models for each dataset; not just one final model that applies on all. 
 
-* Search for alternative Classifier methods/tools.
+* Search for alternative classifier methods/tools.
 
 * Simply/shorten functions that are created during the project. They have repeating codes.
 
