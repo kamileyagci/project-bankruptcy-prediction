@@ -379,6 +379,14 @@ The table below shows the prediction metrics of the final model for the still op
 | Data 5 | Train | 1.00 | 0.99 | 0.99
 | Data 5 | Test | 0.98 | 0.96 | 0.97
 
+#### Best common predictors
+
+These three attributes are good predictors for all five datasets.
+
+* X27: profit on operating activities / financial expenses
+* X34: operating expenses / total liabilities
+* X5: [(cash + short-term securities + receivables - short-term liabilities) / (operating expenses - depreciation)] * 365
+ 
 
 ## Interpretation of Results
 
@@ -416,12 +424,6 @@ Class 0 predictions:
 * Among the model predicted still operating companies, ~98% of them are true still operating companies. (precision, class 0)
 * The Harmonic Mean of Precision and Recall (f1-score, class 0) is ~98%.
 
-**Best common predictors**
-
-* X27: profit on operating activities / financial expenses
-* X34: operating expenses / total liabilities
-* X5: [(cash + short-term securities + receivables - short-term liabilities) / (operating expenses - depreciation)] * 365
- 
 
 ## Conclusion
 
