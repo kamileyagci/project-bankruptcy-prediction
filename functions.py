@@ -737,8 +737,6 @@ def plot_compare_model_metricsAvg(metrics_df_list, model_names_list, save=0):
     
     metrics=['precision', 'recall', 'f1', 'auc']
     
-    data_list=['Data 1', 'Data 1', 'Data 3', 'Data 4', 'Data 5']
-    
     for i,df in enumerate(metrics_df_list):
         
         for m,ax in enumerate(axes.flat):
