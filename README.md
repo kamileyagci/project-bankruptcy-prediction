@@ -439,6 +439,10 @@ Overfitting:
 
 ## Conclusion
 
+Overall, my model correctly identifies
+* 72.3% of the true bankrupt companies
+* 97% of the true still operating companies
+
 I had three main challenges in this project:
 
 1. **Class Imbalance:** 
@@ -455,9 +459,6 @@ I had three main challenges in this project:
     * I tuned parameters which are effecive on overfitting, and find the optimum designs that produces low overfitting, large recall and moderate precision. 
     * However, I couldn't enforce larger reduction in overfitting, since it causes the precision go below 0.5. which is the random guess probability.
 
-Overall, my model correctly identifies
-* 72.3% of the true bankrupt companies
-* 97% of the true still operating companies
 
 ## Future Work
 
