@@ -88,6 +88,10 @@ The number of companies in each dataset and class distributions:
 | Data 5 | 5910 | 5500 | 410
 
 
+**Data Cleaning**
+* No cleaning applied to data used in the analysis. XGBoost Classifier can handle the missing values and outliers.
+* Prelimenary study shows that, model performance with cleaned data is lower than uncleaned data.
+
 ## Method
 
 I will use Ensemble Method 'XGBoost', eXtreme Gradient Boosting, for classification. 
@@ -105,7 +109,6 @@ Initially, I explored the XGBoost Classifier models on Data 3. After determing t
 
 In each dataset, I have used 80% of data for training and 20% for testing.
 
-Note: No cleaning applied to data. XGBoost Classifier can handle the missing values and outliers.
 
 ### Class Imbalance
 
