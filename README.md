@@ -332,6 +332,7 @@ Model 9 (max_depth=4):
 
 Model 7 (max_depth=5):
 * Performance is similar to Model 9
+* Recall is sligtly larger than Model 9
 * More smooth performance on all datasets
 
 Model 10 (max_depth=6):
