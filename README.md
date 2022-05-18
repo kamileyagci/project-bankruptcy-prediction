@@ -430,9 +430,11 @@ Class 0 predictions:
 * Among the model predicted still operating companies, ~98% of them are true still operating companies. (precision, class 0)
 * The Harmonic Mean of Precision and Recall (f1-score, class 0) is ~98%.
 
-Accuracy and AUC scores are high, since model is highly successful in identifying the still operating companies.
+Accuracy and AUC:
+* Accuracy and AUC scores are high, since model is highly successful in identifying the still operating companies.
 
-There is a performance gap between the train and test results (overfitting).
+Overfitting: 
+* There is a performance gap between the train and test results (overfitting).
 
 
 ## Conclusion
