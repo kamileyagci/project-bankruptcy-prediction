@@ -103,6 +103,8 @@ I will focus on the performance of 'recall' metric in order to minimize false ne
 
 Initially, I explored the XGBoost Classifier models on Data 3. After determing the best model designs, I applied them on other datasets and compare the results.
 
+In each dataset, I have used 80% of data for training and 20% for testing.
+
 Note: No cleaning applied to data. XGBoost Classifier can handle the missing values and outliers.
 
 ### Class Imbalance
@@ -362,7 +364,7 @@ Model 7 is the best performing, when all datasets are considered.
 
 #### Class 0 predictions for Final Model
 
-The table below shows the prediction metrics of the final model for the still operating companies (class 0).
+The table below shows the prediction metrics (testing) of the final model for the still operating companies (class 0).
 
 | Data # | precision | recall | f1 |
 | :- | -: | :-: | :-: |
