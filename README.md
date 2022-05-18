@@ -46,7 +46,7 @@ In this study, I will analyze the financial standings of the Polish companies to
 
 ## Business Problem
 
-KPMG, international corporate financial consulting firm, hired me to analyze the financial standing of the Polish companies. The goal of the anlaysis is identifying whether the business will go to bankruptcy in 1-5 years or not. KMPG will use the results of this study to provide an early warning to Polish business clients on their financial standings, so they can take preventive actions.
+KPMG, international corporate financial consulting firm, hired me to analyze the financial standing of the Polish companies. The goal of the analysis is identifying whether the business will go to bankruptcy in 1-5 years or not. KMPG will use the results of this study to provide an early warning to Polish business clients on their financial standings, so they can take preventive actions.
 
 
 ## Data
