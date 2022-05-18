@@ -324,17 +324,19 @@ Metrics graphs for comparison:
 
 <img src="/figures/Metrics_CompareModels_AllData2.png" width=1200/>
 
+Overall the performance of the models are similar, especially recall.
+
 Model 9 (max_depth=4):
-    * Previously Selected performance for data 3
-    * Overfitting is least on Data 3
+* Previously Selected performance for data 3
+* Overfitting is least on Data 3
 
 Model 7 (max_depth=5):
-    * Performance is similar to Model 9
-    * More smooth performance on all datasets
+* Performance is similar to Model 9
+* More smooth performance on all datasets
 
 Model 10 (max_depth=6):
-    * Highest metrics
-    * But overfitting is sligtly larger
+* Highest metrics
+* But overfitting is sligtly larger
     
 Selected model: Model 7
 
