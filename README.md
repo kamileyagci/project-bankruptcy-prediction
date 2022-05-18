@@ -384,6 +384,8 @@ The table below shows the prediction metrics of the final model for the still op
 | Data 4 | Test | 0.98 | 0.97 | 0.98 
 | Data 5 | Train | 1.00 | 0.99 | 0.99
 | Data 5 | Test | 0.98 | 0.96 | 0.97
+| Average | Train | 1.00 | 0.99 | 0.99
+| Average | Test | 0.98 | 0.97 | 0.98
 
 #### Best common predictors
 
