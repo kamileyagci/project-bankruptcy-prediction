@@ -432,7 +432,7 @@ Class 0 predictions:
 
 Accuracy and AUC scores are high, since model is highly successful in identifying the still operating companies.
 
-There is a gap between the train and test results.
+There is a performance gap between the train and test results (overfitting).
 
 
 ## Conclusion
