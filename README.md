@@ -100,9 +100,7 @@ This is a binary classification problem, since my goal is to identify whether th
 
 Evaluation function = 'logloss'
 
-I will use evaluation metrics to measure the performance of the model
-
-I will focus on the performance of 'recall' metric in order to minimize false negatives. Besides, I will also keep an eye on 'precision', 'f1', 'accuracy, and 'AUC' metrics.
+I will use evaluation metrics to measure the performance of the model. I will focus on the 'recall' metric in order to minimize false negatives. Besides, I will also keep an eye on 'precision', 'f1', 'accuracy, and 'AUC' metrics.
 
 
 ## Analysis and Results
