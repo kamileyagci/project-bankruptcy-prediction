@@ -468,7 +468,7 @@ I had three main challenges in this project:
 
 * Search for alternative classifier methods/tools.
 
-* Gather more data, 3-5 years of financial standings for each company. One year period of financial data is not enough to make predictions on company standing.
+* Gather more data that spans 3-5 years of financial standings for each company. One year period of financial data is not enough to make predictions on company standing.
 
 * Simply/shorten functions that are created during the project. They have repeating codes.
 
